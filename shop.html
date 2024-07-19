@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Finder App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* ... (keep existing styles) ... */
+
+        .search-container {
+            position: sticky;
+            top: 70px; /* Adjust based on your header height */
+            z-index: 10;
+            background-color: #f5f5f5;
+            padding: 1rem 0;
+        }
+
+        .food-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .add-button {
+            background-color: #00cc66;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .add-button i {
+            margin-right: 5px;
+        }
+
+        .add-button:hover {
+            background-color: #00994d;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .quantity-controls button {
+            background-color: #00cc66;
+            color: #ffffff;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-controls button:hover {
+            background-color: #00994d;
+        }
+
+        .quantity-controls .qty {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        /* ... (keep the rest of the styles) ... */
+       .add-button {
+            background-color: #00cc66;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            align-self: flex-end;
+        }
+
+        .add-button:hover {
+            background-color: #00994d;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .quantity-controls button {
+            background-color: #00cc66;
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .quantity-controls button:hover {
+            background-color: #00994d;
+        }
+
+        .quantity-controls .qty {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        /* ... (keep the rest of the styles) ... */
+       body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-image {
+            height: auto;
+            width: 100px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            padding: 0.5rem 1rem;
+            color: #333333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: #00cc66;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 50px;
+            padding: 12px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .search-container input[type="text"] {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            outline: none;
+            font-size: 18px;
+        }
+
+        .search-container i {
+            color: #999999;
+            font-size: 20px;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .food-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .food-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .food-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .food-details {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .food-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .food-details .info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .food-details .info span {
+            color: #666666;
+        }
+
+        .food-details .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .food-details .rating {
+            display: flex;
+            align-items: center;
+        }
+
+        .food-details .rating i {
+            color: #FFD700;
+            font-size: 1rem;
+            margin-right: 0.25rem;
+        }
+
+        .food-details button {
+            background-color: #00cc66;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            align-self: flex-end;
+        }
+
+        .food-details button:hover {
+            background-color: #00994d;
+        }
+
+        .food-details p {
+            color: #666666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .quantity-controls button {
+            background-color: #00cc66;
+            color: #ffffff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .quantity-controls button:hover {
+            background-color: #00994d;
+        }
+
+        .quantity-controls .qty {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .logo-image {
+                width: 80px;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .food-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .food-card {
+                flex-direction: column;
+            }
+
+            .food-image {
+                height: 120px;
+            }
+        }
+      .main {
+            margin-top: 80px; /* Ensure it doesn't overlap with the header */
+            padding: 20px;
+        }
+
+    .container {
+        padding-bottom: 2rem;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- ... (keep existing header) ... -->
+    <header>
+        <div class="container">
+            <div class="flex-container">
+                <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="logo-image">
+                <nav class="nav-menu" id="navMenu">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html" class="active">Shop</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <div class="flex space-x-4 text-gray-700">
+                    <a href="#"><i class="fa fa-search search-icon"></i></a>
+                    <a href="#"><i class="fa fa-shopping-cart cart-icon"></i></a>
+                    <a href="#"><i class="fa fa-user icon"></i></a>
+                </div>
+                <button class="mobile-menu-button" id="mobileMenuButton">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Find The Best<br>Food Around You</h1>
+
+           <div class="search-container">
+        <div class="flex items-center bg-white rounded-full shadow-md">
+            <i class="fa fa-search text-gray-400 ml-4"></i>
+            <input type="text" id="searchInput" placeholder="Search your favorite food" class="w-full bg-transparent outline-none p-3">
+            <i class="fa fa-times text-gray-400 mr-4 cursor-pointer hidden" id="clearSearch"></i>
+            <i class="fa fa-sliders text-gray-400 mr-4"></i>
+        </div>
+    </div>
+
+            <div class="flex space-x-4 mb-6 overflow-x-auto pb-2">
+                <button id="btnSalads" class="bg-green-500 text-white px-4 py-2 rounded-full whitespace-nowrap">Salads</button>
+                <button id="btnHotSale" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full whitespace-nowrap">Hot sale</button>
+                <button id="btnPopularity" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full whitespace-nowrap">Popularity</button>
+            </div>
+
+            <div class="food-grid" id="foodContainer">
+                <!-- Food cards will be dynamically generated here -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // ... (keep existing sample data) ...
+      const salads = [
+            // ... (keep the existing salads data)
+             {
+                name: "Avocado Salad",
+                image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjIwc2FsYWR8ZW58MHx8MHx8fDA%3D",
+                time: "20min",
+                rating: 4.5,
+                price: "$12.00"
+            },
+            {
+                name: "Fruits Salad",
+                image: "https://images.unsplash.com/photo-1588068403046-169c80c69938?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjIwc2FsYWR8ZW58MHx8MHx8fDA%3D",
+                time: "20min",
+                rating: 4.5,
+                price: "$11.00"
+            },
+            {
+                name: "Green Salad",
+                image: "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjIwc2FsYWR8ZW58MHx8MHx8fDA%3D",
+                time: "20min",
+                rating: 4.5,
+
+                price: "$10.00"
+            },
+            {
+                name: "Strawberry Salad",
+                image: "https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c2FsYWRzfGVufDB8fDB8fHww",
+                time: "20min",
+                rating: 4.5,
+
+                price: "$10.00"
+            },
+        {
+            name: "Mixed Salad",
+            image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlbnwwfHwwfHx8MA%3D%3D",
+            time: "20min",
+            rating: 4.5,
+
+            price: "$10.00"
+        },
+        {
+            name: "Tomato Salad",
+            image: "https://plus.unsplash.com/premium_photo-1689596510437-aed4adfd125e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlbnwwfHwwfHx8MA%3D%3D",
+            time: "20min",
+            rating: 4.5,
+
+            price: "$10.00"
+        },
+        ];
+
+        const hotSale = [
+            // ... (keep the existing hotSale data)
+           {
+                name: "BBQ Chicken Pizza",
+                image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D",
+                time: "30min",
+                rating: 4.8,
+                price: "$15.00"
+            },
+            {
+                name: "Beefburger",
+                image: "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlZXNlYnVyZ2VyfGVufDB8fDB8fHww",
+                time: "25min",
+                rating: 4.7,
+                price: "$14.00"
+            },
+            {
+                name: "Cheeseburger",
+                image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D",
+                time: "25min",
+                rating: 4.7,
+                price: "$14.00"
+            },
+            {
+                name: "Spicy Ramen",
+                image: "https://images.unsplash.com/photo-1637024698421-533d83c7b883?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlMjByYW1lbnxlbnwwfHwwfHx8MA%3D%3D",
+                time: "15min",
+                rating: 4.6,
+                price: "$13.00"
+            },
+            {
+                name: "Egg Noodles",
+                image: "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlc3xlbnwwfHwwfHx8MA%3D%3D",
+                time: "15min",
+                rating: 4.6,
+                price: "$13.00"
+            },
+            {
+                name: "Veg Noodles",
+                image: "https://images.unsplash.com/photo-1565976469791-9cbef1241c1f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D",
+                time: "15min",
+                rating: 4.6,
+                price: "$13.00"
+            },
+
+        ];
+
+        const popularity = [
+            // ... (keep the existing popularity data)
+           {
+                name: "Tacos",
+                image: "https://images.unsplash.com/photo-1624300629298-e9de39c13be5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D",
+                time: "10min",
+                rating: 4.9,
+                price: "$10.00",
+                description: "Delicious and spicy tacos filled with fresh ingredients."
+            },
+            {
+                name: "Pasta",
+                image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D",
+                time: "20min",
+                rating: 4.8,
+                price: "$12.00",
+                description: "Creamy pasta with a rich and savory sauce."
+            },
+            {
+                name: "Sushi",
+                image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjl8ZW58MHx8MHx8fDA%3D",
+                time: "15min",
+                rating: 4.9,
+                price: "$18.00",
+                description: "Fresh and delicate sushi rolls with various fillings."
+            },
+            {
+                name: "Organic Pizza",
+                image: "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjl6emF8ZW58MHx8MHx8fDA%3D",
+                time: "15min",
+                rating: 4.9,
+                price: "$18.00",
+                description: "Fresh and delicate sushi rolls with various fillings."
+            },
+            {
+                name: "Grilled Salmon",
+                image: "https://images.unsplash.com/photo-1580959375944-abd7e991f971?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZmlzaCUyMHJlY2lwZXxlbnwwfHwwfHx8MA%3D%3D",
+                time: "15min",
+                rating: 4.9,
+                price: "$18.00",
+                description: "Fresh and delicate sushi rolls with various fillings."
+            },
+            {
+                name: "Spicy Tuna",
+                image: "https://images.unsplash.com/photo-1710106687822-999dbeb73dee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlMjB0dW5hfGVufDB8fDB8fHww",
+                time: "15min",
+                rating: 4.9,
+                price: "$18.00",
+                description: "Fresh and delicate sushi rolls with various fillings."
+            },
+        ];
+
+
+        let allFoods = [...salads, ...hotSale, ...popularity];
+
+        function generateFoodCards(category) {
+            const foodContainer = document.getElementById('foodContainer');
+            foodContainer.innerHTML = '';
+
+            category.forEach(food => {
+                const foodCard = document.createElement('div');
+                foodCard.classList.add('food-card');
+
+                const foodImage = document.createElement('img');
+                foodImage.src = food.image;
+                foodImage.alt = food.name;
+                foodImage.classList.add('food-image');
+
+                const foodDetails = document.createElement('div');
+                foodDetails.classList.add('food-details');
+
+                const foodName = document.createElement('h3');
+                foodName.textContent = food.name;
+
+                const foodInfo = document.createElement('div');
+                foodInfo.classList.add('info');
+
+                const foodTime = document.createElement('span');
+                foodTime.textContent = food.time;
+
+                const foodPrice = document.createElement('span');
+                foodPrice.classList.add('price');
+                foodPrice.textContent = food.price;
+
+                const foodRating = document.createElement('div');
+                foodRating.classList.add('rating');
+
+                for (let i = 0; i < 5; i++) {
+                    const star = document.createElement('i');
+                    star.classList.add('fa', i < Math.floor(food.rating) ? 'fa-star' : 'fa-star-o');
+                    foodRating.appendChild(star);
+                }
+
+                const foodButton = document.createElement('div');
+                foodButton.innerHTML = `
+                    <button class="add-button"><i class="fa fa-plus"></i> Add</button>
+                    <div class="quantity-controls hidden">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">1</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                `;
+
+                foodButton.querySelector('.add-button').addEventListener('click', function() {
+                    const quantityControls = this.nextElementSibling;
+                    quantityControls.classList.toggle('hidden');
+                    this.classList.add('hidden');
+                });
+
+                foodButton.querySelector('.increase-qty').addEventListener('click', function() {
+                    const qtySpan = this.previousElementSibling;
+                    let qty = parseInt(qtySpan.textContent);
+                    qty++;
+                    qtySpan.textContent = qty;
+                });
+
+                foodButton.querySelector('.decrease-qty').addEventListener('click', function() {
+                    const qtySpan = this.nextElementSibling;
+                    let qty = parseInt(qtySpan.textContent);
+                    if (qty > 1) {
+                        qty--;
+                        qtySpan.textContent = qty;
+                    } else {
+                        this.closest('.quantity-controls').classList.add('hidden');
+                        this.closest('.food-details').querySelector('.add-button').classList.remove('hidden');
+                    }
+                });
+
+                foodInfo.appendChild(foodTime);
+                foodInfo.appendChild(foodPrice);
+
+                foodDetails.appendChild(foodName);
+                foodDetails.appendChild(foodInfo);
+                foodDetails.appendChild(foodRating);
+
+                if (food.description) {
+                    const foodDescription = document.createElement('p');
+                    foodDescription.textContent = food.description;
+                    foodDetails.appendChild(foodDescription);
+                }
+
+                foodDetails.appendChild(foodButton);
+
+                foodCard.appendChild(foodImage);
+                foodCard.appendChild(foodDetails);
+
+                foodContainer.appendChild(foodCard);
+            });
+        }
+
+        // Initial load
+        generateFoodCards(allFoods);
+
+        // Event listeners for buttons
+        document.getElementById('btnSalads').addEventListener('click', function () {
+            this.classList.add('bg-green-500', 'text-white');
+            document.getElementById('btnHotSale').classList.remove('bg-green-500', 'text-white');
+            document.getElementById('btnPopularity').classList.remove('bg-green-500', 'text-white');
+            generateFoodCards(salads);
+        });
+
+        document.getElementById('btnHotSale').addEventListener('click', function () {
+            this.classList.add('bg-green-500', 'text-white');
+            document.getElementById('btnSalads').classList.remove('bg-green-500', 'text-white');
+            document.getElementById('btnPopularity').classList.remove('bg-green-500', 'text-white');
+            generateFoodCards(hotSale);
+        });
+
+        document.getElementById('btnPopularity').addEventListener('click', function () {
+            this.classList.add('bg-green-500', 'text-white');
+            document.getElementById('btnSalads').classList.remove('bg-green-500', 'text-white');
+            document.getElementById('btnHotSale').classList.remove('bg-green-500', 'text-white');
+            generateFoodCards(popularity);
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('show');
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const filteredFoods = allFoods.filter(food => 
+                food.name.toLowerCase().includes(searchTerm)
+            );
+            generateFoodCards(filteredFoods);
+        });
+      const searchInput = document.getElementById('searchInput');
+    const clearSearch = document.getElementById('clearSearch');
+
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        if (searchTerm.length > 0) {
+            clearSearch.classList.remove('hidden');
+        } else {
+            clearSearch.classList.add('hidden');
+        }
+        const filteredFoods = allFoods.filter(food => 
+            food.name.toLowerCase().includes(searchTerm)
+        );
+        generateFoodCards(filteredFoods);
+    });
+
+    clearSearch.addEventListener('click', function() {
+        searchInput.value = '';
+        this.classList.add('hidden');
+        generateFoodCards(allFoods);
+    });
+    </script>
+</body>
+
+</html>
