@@ -675,26 +675,37 @@
         generateFoodCards(allFoods);
 
         // Event listeners for buttons
-        document.getElementById('btnSalads').addEventListener('click', function () {
-            this.classList.add('bg-green-500', 'text-white');
-            document.getElementById('btnHotSale').classList.remove('bg-green-500', 'text-white');
-            document.getElementById('btnPopularity').classList.remove('bg-green-500', 'text-white');
-            generateFoodCards(salads);
-        });
+        // Event listeners for buttons
+// Event listeners for buttons
+document.getElementById('btnSalads').addEventListener('click', function () {
+    this.classList.add('bg-green-500', 'text-white');
+    this.classList.remove('bg-gray-200', 'text-gray-700');
+    document.getElementById('btnHotSale').classList.remove('bg-green-500', 'text-white');
+    document.getElementById('btnHotSale').classList.add('bg-gray-200', 'text-gray-700');
+    document.getElementById('btnPopularity').classList.remove('bg-green-500', 'text-white');
+    document.getElementById('btnPopularity').classList.add('bg-gray-200', 'text-gray-700');
+    generateFoodCards(salads);
+});
 
-        document.getElementById('btnHotSale').addEventListener('click', function () {
-            this.classList.add('bg-green-500', 'text-white');
-            document.getElementById('btnSalads').classList.remove('bg-green-500', 'text-white');
-            document.getElementById('btnPopularity').classList.remove('bg-green-500', 'text-white');
-            generateFoodCards(hotSale);
-        });
+document.getElementById('btnHotSale').addEventListener('click', function () {
+    this.classList.add('bg-green-500', 'text-white');
+    this.classList.remove('bg-gray-200', 'text-gray-700');
+    document.getElementById('btnSalads').classList.remove('bg-green-500', 'text-white');
+    document.getElementById('btnSalads').classList.add('bg-gray-200', 'text-gray-700');
+    document.getElementById('btnPopularity').classList.remove('bg-green-500', 'text-white');
+    document.getElementById('btnPopularity').classList.add('bg-gray-200', 'text-gray-700');
+    generateFoodCards(hotSale);
+});
 
-        document.getElementById('btnPopularity').addEventListener('click', function () {
-            this.classList.add('bg-green-500', 'text-white');
-            document.getElementById('btnSalads').classList.remove('bg-green-500', 'text-white');
-            document.getElementById('btnHotSale').classList.remove('bg-green-500', 'text-white');
-            generateFoodCards(popularity);
-        });
+document.getElementById('btnPopularity').addEventListener('click', function () {
+    this.classList.add('bg-green-500', 'text-white');
+    this.classList.remove('bg-gray-200', 'text-gray-700');
+    document.getElementById('btnSalads').classList.remove('bg-green-500', 'text-white');
+    document.getElementById('btnSalads').classList.add('bg-gray-200', 'text-gray-700');
+    document.getElementById('btnHotSale').classList.remove('bg-green-500', 'text-white');
+    document.getElementById('btnHotSale').classList.add('bg-gray-200', 'text-gray-700');
+    generateFoodCards(popularity);
+});
 
         // Mobile menu toggle
         document.getElementById('mobileMenuButton').addEventListener('click', function() {
