@@ -18,6 +18,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card img {
@@ -75,6 +76,7 @@
             border-radius: 20px;
             cursor: pointer;
             font-size: 1rem;
+            transition: background-color 0.3s ease;
         }
 
         .card-footer .add-button:hover {
@@ -85,7 +87,7 @@
             width: 100%;
             max-width: 300px; /* Set max-width for consistency */
             margin: auto;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             border-radius: 0.5rem;
@@ -97,6 +99,11 @@
             height: 180px;
             object-fit: cover;
             width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .food-card:hover img {
+            transform: scale(1.1);
         }
 
         .food-card .p-4 {
@@ -110,6 +117,11 @@
         .food-card h3 {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .food-card:hover h3 {
+            color: #28a745;
         }
 
         .food-card .text-gray-600,
@@ -121,6 +133,16 @@
             padding: 0.75rem;
             font-size: 1rem;
             margin-top: 1rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .food-card .add-button:hover {
+            background-color: #218838;
         }
 
         @media (max-width: 640px) {
