@@ -316,47 +316,110 @@
             height: 3rem;
         }
     }
+    .best-selling .btn-shop-now {
+        background-color: #10b981;
+        color: white;
+    }
+    /* Ensure the menu is off-screen when hidden */
+.menu-hidden {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Bring the menu on-screen when visible */
+.menu-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Transition for smooth appearance/disappearance */
+#mobile-menu {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+    /* Hide the header menu on mobile screens */
+@media (max-width: 1024px) {
+  .header-menu {
+    display: none;
+  }
+}
+
+/* Show the mobile menu toggle button on mobile screens */
+@media (max-width: 1024px) {
+  #mobile-menu-toggle {
+    display: block;
+  }
+}
+
+/* Ensure the toggle button is hidden on larger screens */
+@media (min-width: 1025px) {
+  #mobile-menu-toggle {
+    display: none;
+  }
+}
+
+/* Ensure the mobile menu is hidden initially */
+.menu-hidden {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Ensure the mobile menu is visible when toggled */
+.menu-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Transition for smooth appearance/disappearance */
+#mobile-menu {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+
+
   </style>
 </head>
 <body class="font-sans">
   <!-- Header -->
-  <header class="bg-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <div class="logo">
-        <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="logo">
-      </div>
-      <nav class="hidden md:flex space-x-4"  style="font-weight:bold;">
-        <a href="index.html" class="text-gray-700 ">Home</a>
-        <a href="shop.html" class="text-gray-700">Shop</a>
-        <a href="#" class="text-gray-700">Blog</a>
-        <a href="#" class="text-gray-700">Contact Us</a>
-      </nav>
-      <div class="icons flex space-x-4">
-         <a href="#"><i class="fa fa-search search-icon"></i></a>
-        <a href="#"><i class="fa fa-shopping-cart cart-icon"></i></a>
-         <a href="#"><i class="fa fa-user icon"></i></a>
-      </div>
+ <header class="bg-white shadow-md">
+  <div class="container mx-auto flex justify-between items-center p-4">
+    <div class="logo">
+      <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="logo">
+    </div>
+    <!-- Header Menu -->
+    <nav class="header-menu hidden md:flex space-x-4" style="font-weight:bold;">
+      <a href="index.html" class="text-gray-700">Home</a>
+      <a href="shop.html" class="text-gray-700">Shop</a>
+      <a href="#" class="text-gray-700">Blog</a>
+      <a href="#" class="text-gray-700">Contact Us</a>
+    </nav>
+    <!-- Icons -->
+    <div class="icons flex space-x-4">
+      <a href="#"><i class="fa fa-search search-icon"></i></a>
+      <a href="#"><i class="fa fa-shopping-cart cart-icon"></i></a>
+      <a href="#"><i class="fa fa-user icon"></i></a>
+    </div>
     <!-- Mobile Menu Button -->
-<button id="mobile-menu-toggle" class="lg:hidden px-3 py-2 text-gray-700 focus:outline-none">
-  <i class="fas fa-bars fa-lg"></i> <!-- Adjust the size class here -->
-</button>
-
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="lg:hidden fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300">
-  <div class="flex justify-end p-4">
-    <button id="close-menu" class="text-gray-700">
-      <i class="fas fa-times fa-lg"></i> <!-- Adjust the size class here -->
+    <button id="mobile-menu-toggle" class="lg:hidden px-3 py-2 text-gray-700 focus:outline-none">
+      <i class="fas fa-bars fa-lg"></i>
     </button>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 menu-hidden">
+      <div class="flex justify-end p-4">
+        <button id="close-menu" class="text-gray-700">
+          <i class="fas fa-times fa-lg"></i>
+        </button>
+      </div>
+      <nav class="flex flex-col items-center mt-12">
+        <a href="index.html" class="py-2 text-gray-700">Home</a>
+        <a href="shop.html" class="py-2 text-gray-700">Shop</a>
+        <a href="#" class="py-2 text-gray-700">Blog</a>
+        <a href="#" class="py-2 text-gray-700">Contact Us</a>
+      </nav>
+    </div>
   </div>
-  <nav class="flex flex-col items-center mt-12">
-    <a href="index.html" class="py-2 text-gray-700">Home</a>
-    <a href="shop.html" class="py-2 text-gray-700">Shop</a>
-    <a href="#" class="py-2 text-gray-700">Blog</a>
-    <a href="#" class="py-2 text-gray-700">Contact Us</a>
-  </nav>
-</div>
+</header>
 
-  </header>
 
   <!-- Hero Section -->
   <section class="bg-img py-16">
@@ -407,7 +470,7 @@
 
 
   <!-- Featured Products -->
-  <section class="bg-gray-100 py-16"  style="background-image: url('https://img.freepik.com/free-photo/white-simple-textured-design-background_15851597.htm'); background-size: cover; background-position: center;">>
+  <section class="best-selling bg-gray-100 py-16"  style="background-image: url('https://img.freepik.com/free-photo/white-simple-textured-design-background_15851597.htm'); background-size: cover; background-position: center;">>
     <div class="container mx-auto px-4">
       <h2 class="text-2xl font-bold mb-8 text-center">Best Selling Products</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -551,7 +614,7 @@
   <section class="bg-gray-800 py-16 text-white">
     <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
       <div class="flex flex-col items-center">
-        <img src="https://plus.unsplash.com/premium_photo-1683147647528-5baca682d202?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj8MHx8fDA%3D" alt="Service 1" class="mx-auto mb-4">
+        <img src="https://plus.unsplash.com/premium_photo-1683147647528-5baca682d202?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj8fDA%3D" alt="Service 1" class="mx-auto mb-4">
         <h3 class="text-xl font-semibold mb-2">Free Shipping Worldwide</h3>
         <p class="text-gray-300">Enjoy free shipping on all orders worldwide.</p>
       </div>
@@ -677,16 +740,23 @@
       &copy; 2023 Organic Store. All rights reserved.
     </div>
   </footer>
-  <script>
-  document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-    document.getElementById('mobile-menu').classList.remove('translate-x-full');
-  });
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const closeMenu = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-  document.getElementById('close-menu').addEventListener('click', function() {
-    document.getElementById('mobile-menu').classList.add('translate-x-full');
-  });
-</script>
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.remove('menu-hidden');
+        mobileMenu.classList.add('menu-visible');
+      });
 
+      closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('menu-visible');
+        mobileMenu.classList.add('menu-hidden');
+      });
+    });
+  </script>
 
 </body>
 </html>
