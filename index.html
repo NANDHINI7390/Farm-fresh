@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"
     integrity="sha512-5VtFABdNuhZmBvEq4d/4Hb2p04ovR8i8MQD9D0bgNDm3IdnAwBzRRu5iNedCjE6/zSbS4T4p3T2iU83KxV3I0Q=="
@@ -13,6 +15,31 @@
 
   <title>Last40 Store</title>
   <style>
+    /* Assuming the button has a class of 'btn-shop-now' */
+.btn-shop-now {
+  background-color: #4CAF50; /* Replace with your color */
+  color: white; /* Ensure text is readable */
+  border: none; /* Remove default border */
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-size: 16px; /* Adjust font size as needed */
+  border-radius: 5px; /* Adjust border radius if needed */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.btn-shop-now:hover {
+  background-color: #45a049; /* Slightly darker shade on hover */
+}
+
+    /* Custom CSS for Toggle Button Icon */
+#mobile-menu-toggle i {
+  font-size: 1.5rem; /* Adjust the size as needed */
+}
+
+#close-menu i {
+  font-size: 1.5rem; /* Adjust the size as needed */
+}
+
 
     .product {
       position: relative;
@@ -289,10 +316,6 @@
             height: 3rem;
         }
     }
-    .active-home {
-  border-bottom: 2px solid #10B981;
-  padding-bottom: 2px;
-}
   </style>
 </head>
 <body class="font-sans">
@@ -303,7 +326,7 @@
         <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="logo">
       </div>
       <nav class="hidden md:flex space-x-4"  style="font-weight:bold;">
-        <a href="index.html" class="text-gray-700 active-home">Home</a>
+        <a href="index.html" class="text-gray-700 ">Home</a>
         <a href="shop.html" class="text-gray-700">Shop</a>
         <a href="#" class="text-gray-700">Blog</a>
         <a href="#" class="text-gray-700">Contact Us</a>
@@ -313,7 +336,26 @@
         <a href="#"><i class="fa fa-shopping-cart cart-icon"></i></a>
          <a href="#"><i class="fa fa-user icon"></i></a>
       </div>
-    </div>
+    <!-- Mobile Menu Button -->
+<button id="mobile-menu-toggle" class="lg:hidden px-3 py-2 text-gray-700 focus:outline-none">
+  <i class="fas fa-bars fa-lg"></i> <!-- Adjust the size class here -->
+</button>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="lg:hidden fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300">
+  <div class="flex justify-end p-4">
+    <button id="close-menu" class="text-gray-700">
+      <i class="fas fa-times fa-lg"></i> <!-- Adjust the size class here -->
+    </button>
+  </div>
+  <nav class="flex flex-col items-center mt-12">
+    <a href="index.html" class="py-2 text-gray-700">Home</a>
+    <a href="shop.html" class="py-2 text-gray-700">Shop</a>
+    <a href="#" class="py-2 text-gray-700">Blog</a>
+    <a href="#" class="py-2 text-gray-700">Contact Us</a>
+  </nav>
+</div>
+
   </header>
 
   <!-- Hero Section -->
@@ -373,7 +415,7 @@
         <div class="product bg-white rounded-lg shadow-md overflow-hidden">
           <img src="https://images.unsplash.com/photo-1630563451961-ac2ff27616ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlfGVufDB8fDB8fHww" alt="Product Image" class="w-full h-64 object-cover">
           <div class="overlay">
-            <a href="#" class="shop-now">Shop Now</a>
+            <a href="#" class="btn-shop-now">Shop Now</a>
           </div>
           <div class="product-details">
             <div class="p-4">
@@ -394,7 +436,7 @@
         <div class="product bg-white rounded-lg shadow-md overflow-hidden">
           <img src="https://images.unsplash.com/photo-1639427444459-85a1b6ac2d68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D" alt="Product Image" class="w-full h-64 object-cover">
           <div class="overlay">
-            <a href="#" class="shop-now">Shop Now</a>
+            <a href="#" class="btn-shop-now">Shop Now</a>
           </div>
           <div class="product-details">
             <div class="p-4">
@@ -415,7 +457,7 @@
         <div class="product bg-white rounded-lg shadow-md overflow-hidden">
           <img src="https://images.unsplash.com/photo-1534620808146-d33bb39128b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlYWR8ZW58MHx8MHx8fDA%3D" alt="Product Image" class="w-full h-64 object-cover">
           <div class="overlay">
-            <a href="#" class="shop-now">Shop Now</a>
+            <a href="#" class="btn-shop-now">Shop Now</a>
           </div>
           <div class="product-details">
             <div class="p-4">
@@ -635,6 +677,16 @@
       &copy; 2023 Organic Store. All rights reserved.
     </div>
   </footer>
+  <script>
+  document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.remove('translate-x-full');
+  });
+
+  document.getElementById('close-menu').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.add('translate-x-full');
+  });
+</script>
+
 
 </body>
 </html>
