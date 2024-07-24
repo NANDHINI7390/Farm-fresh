@@ -15,6 +15,69 @@
 
   <title>Last40 Store</title>
   <style>
+    /* Apply hover effect only to non-active menu items in mobile view */
+@media (max-width: 768px) { /* Adjust this breakpoint based on your mobile view settings */
+  .menu a:not(.active):hover {
+
+    color: green !important; /* Change this to your desired hover text color */
+  }
+}
+
+
+
+   /* Mobile Menu Styles */
+#mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+#mobile-menu.menu-visible {
+  transform: translateX(0);
+}
+
+#mobile-menu .nav a {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  color: gray;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#mobile-menu .nav a:hover {
+  color: green;
+  text-decoration: none; /* No underline on hover */
+}
+
+#mobile-menu .nav a.active {
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: green; /* Green underline for active item */
+}
+
+#close-menu {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+#close-menu:hover {
+  transform: rotate(90deg);
+}
+
+
+    /* Add this to your CSS file for hover effect and active page styles */
+
+/* Hover effect for header menu items */
+.header-menu a:hover {
+  color: #4CAF50; /* Change to your desired hover color */
+}
+
+/* Active page menu item style */
+.header-menu a.active {
+  color: black;
+  border-bottom: 2px solid #4CAF50; /* Green underline */
+}
+
     /* Assuming the button has a class of 'btn-shop-now' */
 .btn-shop-now {
   background-color: #4CAF50; /* Replace with your color */
@@ -102,7 +165,7 @@
       color: white;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: center;ov
       justify-content: center;
       position: relative;
       margin-bottom: 20px;
@@ -332,10 +395,7 @@
   opacity: 1;
 }
 
-/* Transition for smooth appearance/disappearance */
-#mobile-menu {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
+
     /* Hide the header menu on mobile screens */
 @media (max-width: 1024px) {
   .header-menu {
@@ -369,11 +429,6 @@
   opacity: 1;
 }
 
-/* Transition for smooth appearance/disappearance */
-#mobile-menu {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
 
 
 
@@ -388,7 +443,7 @@
     </div>
     <!-- Header Menu -->
     <nav class="header-menu hidden md:flex space-x-4" style="font-weight:bold;">
-      <a href="index.html" class="text-gray-700">Home</a>
+      <a href="index.html" class="active text-gray-700">Home</a>
       <a href="shop.html" class="text-gray-700">Shop</a>
       <a href="#" class="text-gray-700">Blog</a>
       <a href="#" class="text-gray-700">Contact Us</a>
@@ -404,20 +459,20 @@
       <i class="fas fa-bars fa-lg"></i>
     </button>
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 menu-hidden">
-      <div class="flex justify-end p-4">
-        <button id="close-menu" class="text-gray-700">
-          <i class="fas fa-times fa-lg"></i>
-        </button>
-      </div>
-      <nav class="flex flex-col items-center mt-12">
-        <a href="index.html" class="py-2 text-gray-700">Home</a>
-        <a href="shop.html" class="py-2 text-gray-700">Shop</a>
-        <a href="#" class="py-2 text-gray-700">Blog</a>
-        <a href="#" class="py-2 text-gray-700">Contact Us</a>
-      </nav>
-    </div>
+   <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 menu-hidden">
+  <div class="flex justify-end p-4">
+    <button id="close-menu" class="text-gray-700">
+      <i class="fas fa-times fa-lg"></i>
+    </button>
   </div>
+  <nav class=" menu flex flex-col items-center mt-12">
+    <a href="index.html" style="color: black; border-bottom: 2px solid #4CAF50;"class="active py-2 text-gray-700">Home</a>
+    <a href="shop.html" class="py-2 text-gray-700">Shop</a>
+    <a href="#" class="py-2 text-gray-700">Blog</a>
+    <a href="#" class="py-2 text-gray-700">Contact Us</a>
+  </nav>
+</div>
+
 </header>
 
 
@@ -614,7 +669,7 @@
   <section class="bg-gray-800 py-16 text-white">
     <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
       <div class="flex flex-col items-center">
-        <img src="https://plus.unsplash.com/premium_photo-1683147647528-5baca682d202?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj8fDA%3D" alt="Service 1" class="mx-auto mb-4">
+        <img src="https://plus.unsplash.com/premium_photo-1683147647528-5baca682d202?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjA%3D" alt="Service 1" class="mx-auto mb-4">
         <h3 class="text-xl font-semibold mb-2">Free Shipping Worldwide</h3>
         <p class="text-gray-300">Enjoy free shipping on all orders worldwide.</p>
       </div>
@@ -760,3 +815,6 @@
 
 </body>
 </html>
+
+
+
