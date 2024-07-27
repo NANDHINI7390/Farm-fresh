@@ -212,6 +212,12 @@ nav a:hover {
         width: 100vw;
         background-color: white;
     }
+        .active-link {
+    color: black !important;
+    border-bottom: 2px solid #10B981;
+    padding-bottom: 2px;
+    font-weight: bold;
+}
     </style>
 </head>
 <body class="bg-gray-100">
@@ -219,10 +225,10 @@ nav a:hover {
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="h-12">
            <nav class="hidden md:flex md:items-center md:space-x-4 fixed inset-0 bg-white z-50 flex-col md:flex-row md:static md:bg-transparent justify-center items-center">
-    <a href="index.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Home</a>
-    <a href="shop.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Shop</a>
-    <a href="#" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Blog</a>
-    <a href="#" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Contact Us</a>
+    <a href="index.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style="font-weight:bold;color:#65676b">Home</a>
+   <a href="shop.html" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500 " style=" text-decoration: underline;text-decoration-color: green;text-decoration-thickness:2px; text-underline-offset: 0.5em;font-weight:bold;">Shop</a>
+    <a href="#" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style="font-weight:bold;color:#65676b">Blog</a>
+    <a href="#" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style="font-weight:bold;color:#65676b">Contact Us</a>
     <button id="closeMenu" class="absolute top-4 right-4 text-3xl md:hidden">&times;</button>
 </nav>
             <div class="flex space-x-4 text-gray-600">
