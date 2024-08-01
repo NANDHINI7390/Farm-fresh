@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snappily Gluten Free Recipes</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+       nav a {
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #10B981; /* Tailwind's green-500 */
+}
+
+#closeMenu {
+    transition: transform 0.3s ease;
+}
+
+#closeMenu:hover {
+    transform: rotate(90deg);
+}
+      @media (min-width: 768px) {
+   nav {
+    transition: all 0.3s ease-in-out;
+}
+        nav.flex {
+    display: flex !important;
+}
+        nav a {
+    transition: color 0.3s ease;
+}
+
+    nav a {
+        font-size: 1.5 rem;
+        margin-bottom: 1.5 rem;
+    }
+}
+      nav a:hover {
+    color: #10B981; /* Tailwind's green-500 */
+}
+      @media (max-width: 767px) {
+    nav.flex {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: white;
+    }
+        .active-link {
+    color: black !important;
+    border-bottom: 2px solid #10B981;
+    padding-bottom: 2px;
+    font-weight: bold;
+}
+        .hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+        body {
+            background-color: #ffffff; /* White */
+            color: #222831; /* Dark Blue */
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+        .bg-dark-blue {
+            background-color: #222831;
+        }
+        .bg-green {
+            background-color: #2ecc71;
+        }
+        .bg-grey {
+            background-color: #f5f5f5;
+        }
+        .text-dark-blue {
+            color: #222831;
+        }
+        .text-green {
+            color: #2ecc71;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+       .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.header-content img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+       .header-text {
+    margin-top: 1rem;
+}
+.header-text h1 {
+    margin: 0;
+}
+.header-full-width {
+    background-color: #2ecc71;
+    color: #ffffff;
+    padding: 1rem 0;
+    text-align: center;
+    width: 100%;
+}
+      @media (min-width: 640px) {
+    .header-content {
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+    }
+    .header-content img {
+        max-width: 40%; /* Adjust the width as needed */
+    }
+}
+        @media (min-width: 768px) {
+            .header-content {
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+    }
+    .card {
+        flex-basis: 100%;
+    }
+            .header-text {
+                order: 1; /* To place text after images */
+                flex-basis: 100%;
+                text-align: center;
+            }
+        }
+
+        .vertical-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        input, textarea, button {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            border-color: #2ecc71;
+        }
+        button {
+            background-color: #2ecc71;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+        h1, h2, h3, h4, p {
+            margin-bottom: 1rem;
+        }
+        .hero-section, .info-section, .products-section, .weekly-section {
+            padding: 3rem 1rem;
+        }
+        .hero-section {
+            background-color: #f5f5f5;
+        }
+        .weekly-section {
+            background-color: #2ecc71;
+        }
+        .grid-container {
+            display: grid;
+            gap: 2rem;
+        }
+        .grid-1 {
+            grid-template-columns: 1fr;
+        }
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+      /* Product Card Styling */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #ffffff;
+    max-width: 300px; /* Original max width */
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ensure consistent shadow */
+}
+
+.product-card img {
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.product-card h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+.product-card p {
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+    color: #555;
+}
+
+/* Hover Effects */
+.product-card:hover {
+    background-color: #f0f0f0; /* Background color on hover */
+    transform: scale(1.03); /* Slight scale effect */
+}
+
+.product-card:hover img {
+    transform: scale(1.05); /* Slight zoom effect on image hover */
+}
+      /* Ensure grid layout maintains three columns on large screens */
+.grid-container {
+    display: grid;
+    gap: 1rem; /* Reduced gap for tighter layout */
+    grid-template-columns: 1fr; /* Single column on mobile */
+}
+
+/* Adjust for larger screens */
+@media (min-width: 640px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr); /* Three columns from small screens up */
+    }
+}
+
+/* Further adjustments for larger screens */
+@media (min-width: 1024px) {
+    .grid-container {
+        gap: 2rem; /* Increase gap for larger screens */
+    }
+}
+
+/* Adjust product card for better fit */
+.product-card {
+    max-width: 100%; /* Allow cards to fill available space */
+    width: auto; /* Remove fixed width */
+}
+
+@media (max-width: 639px) {
+    .product-card {
+        max-width: 300px; /* Limit width on mobile for better appearance */
+        margin: 0 auto; /* Center cards on mobile */
+    }
+}
+        .info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center; /* Center align text in mobile view */
+}
+      .text-content {
+    flex: 1; /* Make text-content take equal space */
+}
+      .info-content img {
+    flex: 1; /* Make image take equal space */
+    max-width: 100%; /* Ensure image does not overflow */
+}
+        .info-content p {
+            max-width: 90%; /* Responsive text width */
+            margin: 1rem 0;
+        }
+       @media (min-width: 768px) {
+    .info-content {
+        flex-direction: row;
+        text-align: left; /* Left align text on larger screens */
+        align-items: center; /* Center align items vertically */
+    }
+    .text-content p {
+        max-width: 100%; /* Allow full width for paragraph */
+    }
+    .info-content img {
+        margin-left: 1rem; /* Add space between text and image */
+    }
+}
+       footer {
+    background-color: #222831; /* Dark blue background, as in your original */
+    color: #ffffff; /* White text, as in your original */
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-section {
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.footer-section h4 {
+    color: #2ecc71; /* Green color for headings, as in your original */
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section input,
+.footer-section textarea {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    background-color: #ffffff; /* White background for inputs */
+    color: #222831; /* Dark blue text for inputs */
+    border: 1px solid #ddd;
+}
+
+.footer-section button {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    background-color: #2ecc71; /* Green background for button, as in your original */
+    border: none;
+    color: #ffffff; /* White text for button */
+    cursor: pointer;
+}
+
+.footer-section button:hover {
+    background-color: #27ae60; /* Darker green on hover, as in your original */
+}
+
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .footer-section {
+        margin-bottom: 0;
+        width: 30%;
+    }
+}
+      .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #ffffff;
+    max-width: 300px;
+    width: 100%;
+}
+.card img {
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+.card p {
+    margin: 0;
+}
+      .products-section {
+    padding: 3rem 1rem; /* Add padding if not already present */
+    text-align: center; /* Center-align text in the section */
+}
+
+.products-section h2 {
+    margin: 0 auto 2rem auto; /* Center heading and add margin at the bottom */
+    max-width: 80%; /* Optional: Ensure heading does not stretch too wide */
+}
+      .scroll-animation {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animation.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+    </style>
+</head>
+<body>
+  <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="h-12">
+           <nav class="hidden md:flex md:items-center md:space-x-4 fixed inset-0 bg-white z-50 flex-col md:flex-row md:static md:bg-transparent justify-center items-center">
+    <a href="index.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Home</a>
+   <a href="shop.html" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500 " >Shop</a>
+    <a href="blog.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style=" text-decoration: underline;text-decoration-color: green;text-decoration-thickness:2px; text-underline-offset: 0.5em;font-weight:bold;">Blog</a>
+    <a href="#" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Contact Us</a>
+    <button id="closeMenu" class="absolute top-4 right-4 text-3xl md:hidden">&times;</button>
+</nav>
+            <div class="flex space-x-4 text-gray-600">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+           <button class="md:hidden text-gray-600 text-2xl" id="mobileMenuButton">
+    <i class="fas fa-bars"></i>
+</button>
+        </div>
+    </header>
+    <!-- Header Section -->
+    <header>
+    <div class="header-content">
+        <img src="https://i.ibb.co/BzVvRWC/image.png" alt="Pasta Image">
+        <div class="card">
+            <img src="https://i.ibb.co/FHyyf30/image.png" alt="Asparagus Dish" class="rounded-full">
+            <p class="text-lg font-serif">Delectable Gluten Free Recipes <span style="font-weight:bold">in a Snap</span></p>
+        </div>
+    </div>
+
+    <div class="header-full-width">
+        <p>Gluten Free • Gluten Free • Gluten Free • Gluten Free • Gluten Free • Gluten Free</p>
+    </div>
+</header>
+
+    <!-- Products Section -->
+<!-- Products Section -->
+<section class="products-section">
+    <div class="container">
+        <h2 class="text-2xl font-bold mb-4 text-center">"Satisfy Your <span class="text-green">Cravings</span> with Our <span class="text-green">Unique</span> Recipes"</h2>
+        <div class="grid-container">
+            <div class="product-card">
+                <img src="https://i.ibb.co/rf2RRD8/image.png" alt="Potatoes">
+                <h3 style="font-weight:bold;color:green;">Potatoes</h3>
+              <p>Crispy roasted delight</p>
+
+            </div>
+            <div class="product-card">
+                <img src="https://i.ibb.co/6tdjv5k/image.png" alt="Soup">
+                <h3 style="font-weight:bold;color:green;">Soup</h3>
+              <p>Creamy Thai pumpkin</p>
+            </div>
+            <div class="product-card">
+                <img src="https://i.ibb.co/b1Zd017/image.png" alt="Bread">
+                <h3 style="font-weight:bold;color:green;">Bread</h3>
+              <p>Spiced banana walnut</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Info Section -->
+       <!-- Info Section -->
+<section class="info-section">
+    <div class="container">
+        <div class="info-content">
+            <div class="text-content">
+                <h2 class="text-2xl font-bold mb-4">Hi, my name is Jess</h2>
+                <p>Welcome to my little corner of the internet! I'm Jess, a self-taught chef with a passion for creating delicious and nutritious meals. My journey in the culinary world started as a hobby, experimenting with different ingredients and flavors in my home kitchen. Over the years, cooking has become more than just a pastime; it's a way of expressing myself and connecting with others.  </p>
+            </div>
+            <img src="https://i.ibb.co/0YSrTrN/image.png" alt="Jess cooking" class="rounded mb-4">
+        </div>
+    </div>
+</section>
+
+
+    </main>
+  <!-- Weekly Inspirations Section -->
+   <!-- Weekly Inspirations Section -->
+<section class="weekly-section text-center">
+    <div class="container">
+        <h2 class="text-2xl font-bold mb-4 text-white">Weekly Inspirations</h2>
+        <h3 class="text-xl font-semibold mb-4 text-white">Top 5 Recipes for a Perfect Breakfast</h3>
+        <p class="text-sm text-white mb-4 max-w-lg mx-auto">
+            Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading...
+        </p>
+        <img src="https://i.ibb.co/vY6NVC6/image.png" alt="Breakfast bars" class="rounded mt-4 mx-auto scroll-animation">
+    </div>
+</section>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <h4 class="font-bold" style="color: #2ecc71">SNAPPILY</h4>
+                <p class="mb-4">Want SNAPPILY recipes in your inbox?</p>
+                <form action="#" method="post">
+                    <input type="email" placeholder="Email" class="px-4 py-2 rounded mb-2 bg-white w-full">
+                    <button type="submit" class="px-4 py-2 bg-green text-white rounded w-full">Subscribe</button>
+                </form>
+            </div>
+          <br>
+            <div>
+                <h4 class="font-bold" style="color: #2ecc71">Follow</h4>
+                <ul>
+                    <li>Instagram</li>
+                    <li>Facebook</li>
+                    <li>YouTube</li>
+                    <li>Tiktok</li>
+                </ul>
+            </div>
+          <br>
+            <div>
+                <h4 class="font-bold" style="color: #2ecc71">Contact SNAPPILY</h4>
+                <form class="vertical-form" action="https://submit-form.com/YhG9jsScY">
+                    <label for="first-name"style="color:#D3D3D3">First name</label>
+                    <input id="first-name" name="first-name" type="text" class="bg-white w-full" />
+                    <label for="last-name"style="color:#D3D3D3">Last name</label>
+                    <input id="last-name" name="last-name" type="text" class="bg-white w-full" />
+                    <label for="message"style="color:#D3D3D3">Message</label>
+                    <textarea id="message" name="message" cols="15" rows="5" class="bg-white w-full"></textarea>
+                    <button type="submit" class="bg-green text-white w-full">Submit</button>
+                </form>
+            </div>
+        </div>
+        <p class="mt-8 text-sm">© 2024 Snappily. All rights reserved.</p>
+    </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var scrollAnimations = document.querySelectorAll('.scroll-animation');
+
+        function checkScroll() {
+            scrollAnimations.forEach(function(element) {
+                var position = element.getBoundingClientRect().top;
+                var windowHeight = window.innerHeight;
+
+                if (position < windowHeight * 0.75) {
+                    element.classList.add('animate');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        checkScroll(); // Check on load
+    });
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+const nav = document.querySelector('nav');
+const closeMenu = document.getElementById('closeMenu');
+
+function toggleMenu() {
+    nav.classList.toggle('flex');
+    nav.classList.toggle('hidden');
+    document.body.classList.toggle('overflow-hidden');
+}
+
+mobileMenuButton.addEventListener('click', toggleMenu);
+closeMenu.addEventListener('click', toggleMenu);
+
+// Close menu when clicking on a link
+nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', toggleMenu);
+});
+</script>
+</body>
+</html>
