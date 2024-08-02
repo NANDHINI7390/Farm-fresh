@@ -375,6 +375,28 @@
     opacity: 1;
     transform: translateY(0);
 }
+      html {
+    scroll-behavior: smooth;
+}
+
+/* Add this to your <style> section */
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.header-slide-in {
+    animation: slideIn 1s ease-out forwards;
+    opacity: 0; /* Start hidden */
+    transform: translateY(-100%); /* Start off-screen */
+}
 
 
     </style>
@@ -401,7 +423,9 @@
         </div>
     </header>
     <!-- Header Section -->
-    <header>
+    <!-- Modify your header section like this -->
+
+<header class="header-slide-in">
     <div class="header-content">
         <img src="https://i.ibb.co/BzVvRWC/image.png" alt="Pasta Image">
         <div class="card">
@@ -546,6 +570,33 @@ closeMenu.addEventListener('click', toggleMenu);
 nav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', toggleMenu);
 });
+    document.addEventListener('DOMContentLoaded', function() {
+    var scrollAnimations = document.querySelectorAll('.scroll-animation');
+
+    function checkScroll() {
+        scrollAnimations.forEach(function(element) {
+            var position = element.getBoundingClientRect().top;
+            var windowHeight = window.innerHeight;
+
+            if (position < windowHeight * 0.75) {
+                element.classList.add('animate');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkScroll);
+    checkScroll(); // Check on load
+});
+    // Add this script to control visibility if needed
+
+document.addEventListener('DOMContentLoaded', function() {
+    const headerSlideIn = document.querySelector('.header-slide-in');
+
+    // Add class to trigger animation on load
+    headerSlideIn.classList.add('header-slide-in');
+});
+
+
 </script>
 </body>
 </html>
