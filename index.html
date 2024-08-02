@@ -15,6 +15,29 @@
 
   <title>Last40 Store</title>
   <style>
+    .header {
+  position: relative;
+  z-index: 0; /* Ensure header is below the hero section */
+  margin-bottom: 1rem; /* Add margin to ensure spacing */
+}
+    .hero-section {
+  position: relative;
+  z-index: 1;
+  background-color: #fff; /* Or adjust based on your design */
+  padding-top: 1rem; /* Add padding to avoid overlap */
+}
+    /* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top: 3rem;
+  }
+}
      /* Custom styles for the thank you message */
         #thank-you-message {
             display: none;
@@ -498,6 +521,42 @@ body {
             font-size: 1rem;
             color: #4a5568; /* Gray color */
         }
+    .slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #717171;
+}
+
 
 
 
@@ -544,21 +603,61 @@ body {
 </div>
 
 </header>
+  <br>
 
 
-  <!-- Hero Section -->
-  <section class="bg-img py-16">
-    <div class="container mx-auto flex flex-col md:flex-row items-center">
-      <div class="md:w-1/2 px-4 sm:px-6 lg:px-8 md:order-2"> <!-- Adjusted padding and order for mobile -->
-        <h1 class="text-4xl font-bold mb-4">Fresh Organic From The Farm</h1>
-        <p class="text-gray-700 mb-6">Enjoy the best quality fresh produce directly from the farm to your table. Experience the difference with our organic products.</p>
-        <a href="#" class="bg-green-500 text-white px-4 py-2 rounded inline-block">Shop Now</a>
+
+
+
+
+
+ <!-- Hero Section -->
+<section class="bg-img py-16 relative">
+  <div class="slider">
+    <div class="slides">
+      <div class="slide">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 px-4 sm:px-6 lg:px-8 md:order-2">
+            <h1 class="text-4xl font-bold mb-4 "style="position:relative;top:47px;" >Fresh Organic From The Farm</h1>
+            <br>
+            <br>
+            <p class="text-gray-700 mb-6">Enjoy the best quality fresh produce directly from the farm to your table. Experience the difference with our organic products.</p>
+            <a href="#" class="bg-green-500 text-white px-4 py-2 rounded inline-block">Shop Now</a>
+          </div>
+          <br>
+          <div class="md:w-1/2 md:order-1 flex justify-center items-center">
+            <img src="https://images.unsplash.com/photo-1548808918-a33260f83b25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlMjBmb29kfGVufDB8fDB8fHww" alt="Fresh Produce" class="w-full md:max-w-full h-auto max-h-64 object-cover">
+          </div>
+        </div>
       </div>
-      <div class="md:w-1/2 md:order-1 flex justify-center items-center"> <!-- Center aligning and order for mobile -->
-        <img src="https://images.unsplash.com/photo-1548808918-a33260f83b25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlMjBmb29kfGVufDB8fDB8fHww" alt="Fresh Produce" class="w-full md:max-w-full h-auto max-h-64 object-cover"> <!-- Adjusted image class -->
+      <!-- Add more slides as needed -->
+        <div class="slide">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 px-4 sm:px-6 lg:px-8 md:order-2">
+            <h1 class="text-4xl font-bold mb-4"style="position:relative;top:47px;">Straight from the farm</h1>
+              <br>
+            <br>
+            <p class="text-gray-700 mb-6">Enjoy the best quality fresh produce directly from the farm to your table. Experience the difference with our organic products.</p>
+            <a href="#" class="bg-green-500 text-white px-4 py-2 rounded inline-block">Shop Now</a>
+          </div>
+          <br>
+          <div class="md:w-1/2 md:order-1 flex justify-center items-center">
+            <img src="https://i.ibb.co/7n12Jb7/image-removebg-preview.png" alt="Fresh Produce" class="w-full md:max-w-full h-auto max-h-64 object-cover">
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+    <br>
+    <br>
+    <br>
+    <div class="dots flex justify-center mt-4">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <!-- Add more dots for additional slides -->
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -949,6 +1048,33 @@ body {
 
         const countdownEndTime = new Date('2024-12-31T23:59:59').getTime();
         startCountdown(countdownEndTime);
+      const slides = document.querySelector('.slides');
+const slideElements = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+
+function showSlide(index) {
+  if (index >= slideElements.length) {
+    currentSlide = 0;
+  } else if (index < 0) {
+    currentSlide = slideElements.length - 1;
+  } else {
+    currentSlide = index;
+  }
+
+  slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+}
+
+function nextSlide() {
+  showSlide(currentSlide + 1);
+}
+
+setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+// Initialize dots
+showSlide(currentSlide);
+
   </script>
 
 </body>
