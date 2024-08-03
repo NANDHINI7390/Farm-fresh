@@ -168,13 +168,6 @@
             max-width: 300px;
             margin: 0 auto;
         }
-      nav a {
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #10B981; /* Tailwind's green-500 */
-}
 
 #closeMenu {
     transition: transform 0.3s ease;
@@ -218,6 +211,32 @@ nav a:hover {
     padding-bottom: 2px;
     font-weight: bold;
 }
+       nav a {
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    color: #65676b;
+    font-weight: bold;
+    text-decoration: none;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+    color: #10B981 !important; /* Green color, using !important to override any other styles */
+    border-bottom-color: #10B981 !important;
+}
+
+nav a.active {
+    color: black !important;
+    border-bottom-color: #10B981 !important;
+}
+
+/* Add this to ensure hover works on mobile too */
+@media (max-width: 767px) {
+    nav a:hover {
+        color: #10B981 !important;
+        border-bottom-color: #10B981 !important;
+    }
+}
     </style>
 </head>
 <body class="bg-gray-100">
@@ -225,10 +244,10 @@ nav a:hover {
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="h-12">
            <nav class="hidden md:flex md:items-center md:space-x-4 fixed inset-0 bg-white z-50 flex-col md:flex-row md:static md:bg-transparent justify-center items-center">
-    <a href="index.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Home</a>
+    <a href="index.html" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style="font-weight:bold;color:#65676b">Home</a>
    <a href="shop.html" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500 " style=" text-decoration: underline;text-decoration-color: green;text-decoration-thickness:2px; text-underline-offset: 0.5em;font-weight:bold;">Shop</a>
-    <a href="blog.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Blog</a>
-    <a href="#" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Contact Us</a>
+    <a href="#" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style="font-weight:bold;color:#65676b">Blog</a>
+    <a href="#" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style="font-weight:bold;color:#65676b">Contact Us</a>
     <button id="closeMenu" class="absolute top-4 right-4 text-3xl md:hidden">&times;</button>
 </nav>
             <div class="flex space-x-4 text-gray-600">
@@ -278,7 +297,7 @@ nav a:hover {
 </div>
 <!-- Add this new div right after the foodContainer div -->
 <div id="noResultsIllustration" class="no-results-illustration">
-    <img src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg" alt="No Results Found">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqLEO9n4LWhQTVhCKpYa0iJK33aTQQDFLZEg&s" alt="No Results Found">
     <p class="text-gray-500 mt-4">No results found. Try adjusting your search or filters.</p>
 </div>
 
