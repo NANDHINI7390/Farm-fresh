@@ -258,83 +258,7 @@
         margin-left: 1rem; /* Add space between text and image */
     }
 }
-       footer {
-    background-color: #222831; /* Dark blue background, as in your original */
-    color: #ffffff; /* White text, as in your original */
-    padding: 2rem 0;
-    text-align: center;
-}
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.footer-section {
-    margin-bottom: 2rem;
-    width: 100%;
-    max-width: 400px;
-}
-
-.footer-section h4 {
-    color: #2ecc71; /* Green color for headings, as in your original */
-    margin-bottom: 1rem;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-section form {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-section input,
-.footer-section textarea {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    width: 100%;
-    background-color: #ffffff; /* White background for inputs */
-    color: #222831; /* Dark blue text for inputs */
-    border: 1px solid #ddd;
-}
-
-.footer-section button {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    width: 100%;
-    background-color: #2ecc71; /* Green background for button, as in your original */
-    border: none;
-    color: #ffffff; /* White text for button */
-    cursor: pointer;
-}
-
-.footer-section button:hover {
-    background-color: #27ae60; /* Darker green on hover, as in your original */
-}
-
-@media (min-width: 768px) {
-    .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-
-    .footer-section {
-        margin-bottom: 0;
-        width: 30%;
-    }
-}
       .card {
     display: flex;
     flex-direction: column;
@@ -498,43 +422,41 @@
 </section>
 
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="container footer-content">
-            <div>
-                <h4 class="font-bold" style="color: #2ecc71">SNAPPILY</h4>
-                <p class="mb-4">Want SNAPPILY recipes in your inbox?</p>
-                <form action="#" method="post">
-                    <input type="email" placeholder="Email" class="px-4 py-2 rounded mb-2 bg-white w-full">
-                    <button type="submit" class="px-4 py-2 bg-green text-white rounded w-full">Subscribe</button>
-                </form>
-            </div>
-          <br>
-            <div>
-                <h4 class="font-bold" style="color: #2ecc71">Follow</h4>
-                <ul>
-                    <li>Instagram</li>
-                    <li>Facebook</li>
-                    <li>YouTube</li>
-                    <li>Tiktok</li>
-                </ul>
-            </div>
-          <br>
-            <div>
-                <h4 class="font-bold" style="color: #2ecc71">Contact SNAPPILY</h4>
-                <form class="vertical-form" action="https://submit-form.com/YhG9jsScY">
-                    <label for="first-name"style="color:#D3D3D3">First name</label>
-                    <input id="first-name" name="first-name" type="text" class="bg-white w-full" />
-                    <label for="last-name"style="color:#D3D3D3">Last name</label>
-                    <input id="last-name" name="last-name" type="text" class="bg-white w-full" />
-                    <label for="message"style="color:#D3D3D3">Message</label>
-                    <textarea id="message" name="message" cols="15" rows="5" class="bg-white w-full"></textarea>
-                    <button type="submit" class="bg-green text-white w-full">Submit</button>
-                </form>
-            </div>
-        </div>
-        <p class="mt-8 text-sm">© 2024 Snappily. All rights reserved.</p>
-    </footer>
+   <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Information</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-300">About Us</a></li>
+          <li><a href="#" class="text-gray-300">Contact Us</a></li>
+          <li><a href="#" class="text-gray-300">Store Locations</a></li>
+          <li><a href="#" class="text-gray-300">FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">My Account</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-300">Order History</a></li>
+          <li><a href="#" class="text-gray-300">Wish List</a></li>
+          <li><a href="#" class="text-gray-300">Newsletter</a></li>
+          <li><a href="#" class="text-gray-300">Specials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Popular Tags</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-300">Organic</a></li>
+          <li><a href="#" class="text-gray-300">Fresh</a></li>
+          <li><a href="#" class="text-gray-300">Fruits</a></li>
+          <li><a href="#" class="text-gray-300">Vegetables</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center mt-8 text-gray-400">
+      &copy; 2023 Organic Store. All rights reserved.
+    </div>
+  </footer>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
         var scrollAnimations = document.querySelectorAll('.scroll-animation');
