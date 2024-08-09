@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<title>Snappily Gluten Free Recipes</title>
+<link rel="stylesheet" href="styles.css"> <!-- link to your stylesheet -->
+<style>
+nav a {
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #10B981; /* Tailwind's green-500 */
+}
+
+#closeMenu {
+    transition: transform 0.3s ease;
+}
+
+#closeMenu:hover {
+    transform: rotate(90deg);
+}
+
+header {
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .header-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: static;
+        width: auto;
+        background-color: transparent;
+    }
+
+    .header-nav a {
+        margin: 0 1rem;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .header-nav {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        z-index: 50;
+    }
+
+    .mobile-menu a {
+        margin: 1rem 0;
+    }
+
+    .mobile-menu.hidden {
+        display: none;
+    }
+}
+
+.section-with-bg {
+    background-image: url('https://i.ibb.co/yXYvqzH/Default-black-women-buying-vegetable-2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
+    position: relative;
+    width: 100%;
+}
+
+.bg-overlay {
+    background-color: rgba(0, 128, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+.shadow-text {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+    .section-with-bg {
+        min-height: 600px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-with-bg {
+        min-height: 700px;
+    }
+}
+  /* Contact Form Container */
+.contact-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Form Styling */
+.contact-form-container form {
+    width: 100%;
+    max-width: 500px; /* Increase the width of the form */
+    margin-right: 20px;
+}
+
+/* Image Styling */
+.contact-form-container img {
+    max-width: 400px; /* Increase the max width of the image */
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: Add border-radius for a softer look */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact-form-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-form-container img {
+        margin-top: 20px;
+        max-width: 100%; /* Full width on smaller screens */
+    }
+
+    .contact-form-container form {
+        margin-right: 0;
+    }
+}
+ /* Interactive FAQ Styles */
+.faq-item {
+    cursor: pointer;
+}
+
+.faq-content {
+    display: none;
+}
+
+.faq-item.active .faq-content {
+    display: block;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+  /* Testimonials Section */
+section {
+    background-color: #f9fafb; /* Light gray background */
+}
+
+/* Testimonials Section */
+.bg-gray-50 {
+    background-color: #f9fafb; /* Light gray background */
+}
+
+.transition-transform {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transform {
+    transform: scale(1);
+}
+
+.hover\:scale-105:hover {
+    transform: scale(1.05);
+}
+
+.hover\:shadow-2xl:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.border-green-500 {
+    border-color: #10B981;
+}
+
+.text-green-600 {
+    color: #10B981;
+}
+
+.text-gray-700 {
+    color: #4A5568;
+}
+
+.mb-12 {
+    margin-bottom: 3rem; /* Increase bottom margin for better spacing */
+}
+  .blog-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    background-color: #f5f5f5; /* Default background */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    background-color: #e0e0e0; /* Background color on hover */
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+<!-- Header Section -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="h-12">
+        <nav class="header-nav">
+            <a href="index.html" class="text-2xl md:text-base hover:text-green-500" style="font-weight:bold;color:#65676b">Home</a>
+            <a href="shop.html" class="nav-link text-2xl md:text-base hover:text-green-500" style="font-weight:bold;color:#65676b">Shop</a>
+            <a href="blog.html" class="text-2xl md:text-base hover:text-green-500" style="font-weight:bold;color:#65676b">Blog</a>
+            <a href="contact.html" class="text-2xl md:text-base hover:text-green-500" style="text-decoration: underline; text-decoration-color: green; text-decoration-thickness: 2px; text-underline-offset: 0.5em; font-weight:bold;">Contact Us</a>
+        </nav>
+        <div class="flex space-x-4 text-gray-600">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+        </div>
+        <button class="md:hidden text-gray-600 text-2xl" id="mobileMenuButton">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    <nav class="mobile-menu hidden">
+        <button id="closeMenu" class="absolute top-4 right-4 text-3xl">&times;</button>
+        <a href="index.html" class="text-2xl mb-6 hover:text-green-500">Home</a>
+        <a href="shop.html" class="nav-link text-2xl mb-6 hover:text-green-500" >Shop</a>
+        <a href="blog.html" class="text-2xl mb-6 hover:text-green-500">Blog</a>
+        <a href="contact.html" class="text-2xl mb-6 hover:text-green-500" style="text-decoration: underline; text-decoration-color: green; text-decoration-thickness: 2px; text-underline-offset: 0.5em;">Contact Us</a>
+    </nav>
+</header>
+
+<!-- Main Content Section -->
+<main>
+    <!-- Background Image Section -->
+  <section class="section-with-bg relative">
+    <div class="bg-overlay"></div>
+    <div class="content container mx-auto px-4 py-12 text-center relative z-10">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 shadow-text">Get in Touch with Us</h1>
+        <p class="text-lg md:text-xl text-white mb-8 shadow-text">We would love to hear from you! Whether you have questions about our organic products or want to visit our store, our team is here to assist you.</p>
+
+        <!-- Contact Information with Images -->
+        <div class="flex flex-wrap justify-center gap-6 mb-12">
+            <div class="w-full sm:w-1/2 md:w-1/3 p-4 flex flex-col items-center">
+                <img src="https://media.istockphoto.com/id/1157106624/photo/all-your-necessities-stored-in-one-place.webp?b=1&s=170667a&w=0&k=20&c=DiO0mrW50Xmix2zYr9gN7D-Q-gqQvHBcNtBMBrP1AR4=" alt="Store Image" class="w-24 h-24 rounded-full object-cover mb-4">
+                <i class="fas fa-map-marker-alt text-4xl text-green-500 mb-4"></i>
+                <h2 class="text-2xl font-bold mb-2 text-white">Our Store</h2>
+                <p class="text-white">123 Organic Lane, Green City, GA 12345</p>
+            </div>
+            <div class="w-full sm:w-1/2 md:w-1/3 p-4 flex flex-col items-center">
+                <img src="https://i.ibb.co/yR8HXj1/telephone-586268-640.jpg" alt="Phone Image" class="w-24 h-24 rounded-full object-cover mb-4">
+                <i class="fas fa-phone-alt text-4xl text-green-500 mb-4"></i>
+                <h2 class="text-2xl font-bold mb-2 text-white">Call Us</h2>
+                <p class="text-white">(123) 456-7890</p>
+            </div>
+            <div class="w-full sm:w-1/2 md:w-1/3 p-4 flex flex-col items-center">
+                <img src="https://i.ibb.co/42thJb8/image.png" alt="Email Image" class="w-24 h-24 rounded-full object-cover mb-4">
+                <i class="fas fa-envelope text-4xl text-green-500 mb-4"></i>
+                <h2 class="text-2xl font-bold mb-2 text-white">Email Us</h2>
+                <p class="text-white">info@organicstore.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact Form Section -->
+<section class="container mx-auto px-4 py-12">
+   <h2 class="text-3xl font-bold text-center mb-8" style="color:#009966">Contact Us</h2>
+    <div class="flex flex-col md:flex-row justify-center items-start">
+        <!-- Image -->
+        <div id="contactImage" class="w-full max-w-lg mb-8 md:mb-0 md:mr-8 flex-1">
+            <img src="https://i.pngimg.me/thumb/f/720/91fa560e4f914ed8adc8.jpg" alt="Contact Image" class="w-full h-auto rounded-md object-cover">
+        </div>
+
+        <!-- Contact Form -->
+        <form id="contactForm" action="#" method="POST" class="w-full max-w-lg flex-1">
+            <div class="mb-6">
+                <label for="name" class="block text-lg font-bold mb-2">Name</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div class="mb-6">
+                <label for="email" class="block text-lg font-bold mb-2">Email</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md" required>
+            </div>
+            <div class="mb-6">
+                <label for="message" class="block text-lg font-bold mb-2">Message</label>
+                <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md" required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="px-6 py-3 bg-green-500 text-white font-bold rounded-md">Send Message</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="hidden text-center mt-8">
+        <i class="fas fa-check-circle text-green-500 text-4xl mb-2"></i>
+        <p class="text-lg font-bold">The form was submitted successfully.</p>
+    </div>
+</section>
+
+<script>
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        form.style.display = 'none';
+        successMessage.classList.remove('hidden');
+
+        setTimeout(() => {
+            successMessage.classList.add('hidden');
+            form.style.display = 'block';
+            form.reset(); // Reset form fields
+        }, 3000);
+    });
+</script>
+   <!-- New Section 1: Testimonials -->
+  <!-- Testimonials Section -->
+<section class="container mx-auto px-4 py-12 bg-gray-50">
+    <h2 class="text-3xl font-bold text-center mb-8" style="color:#009966">What Our Customers Say</h2>
+    <div class="flex flex-wrap justify-center gap-6">
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 flex flex-col items-center bg-white shadow-lg rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Customer 1" class="w-20 h-20 rounded-full mb-4 border-4 border-black-500">
+            <p class="text-lg font-semibold mb-2 text-green-600" style="color:black;font-weight:bold;">John Doe</p>
+            <p class="text-gray-600 text-center">"I love the fresh and organic products! The quality is always top-notch, and the customer service is excellent."</p>
+        </div>
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 flex flex-col items-center bg-white shadow-lg rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Customer 2" class="w-20 h-20 rounded-full mb-4 border-4 border-black-500">
+            <p class="text-lg font-semibold mb-2 text-green-600"  style="color:black;font-weight:bold;">Jane Smith</p>
+            <p class="text-gray-600 text-center">"A fantastic selection of organic goods! The store is well-organized, and I always find what I need."</p>
+        </div>
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 flex flex-col items-center bg-white shadow-lg rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Customer 3" class="w-20 h-20 rounded-full mb-4 border-4 border-black-500">
+            <p class="text-lg font-semibold mb-2 text-green-600"  style="color:black;font-weight:bold;">Alex Johnson</p>
+            <p class="text-gray-600 text-center">"Great experience! The organic selection is impressive, and the service is always friendly."</p>
+        </div>
+    </div>
+</section>
+<!-- New Section 2: Blog Highlights -->
+<!-- Blog Highlights Section -->
+<section class="container mx-auto px-4 py-6 bg-gray-50">
+    <h2 class="text-xl font-bold text-center mb-4" style="color:#009966">From Our Blog</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+            <img src="https://cdn.cdnparenting.com/articles/2018/11/16145019/768948766-H-1024x700.webp" alt="Blog Post 1" class="w-full h-40 object-cover">
+            <div class="p-4">
+                <h3 class="text-sm font-semibold mb-1 text-green-600">The Benefits of Organic Eating</h3>
+                <p class="text-gray-600 text-xs mb-1">Discover organic food benefits.</p>
+                <a href="#" class="text-green-500 hover:text-green-700 hover:underline text-xs transition duration-300 ease-in-out">Read More</a>
+            </div>
+        </div>
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+            <img src="https://img.delicious.com.au/52aYxlWM/del/2015/10/del1015p101-2-16913-1.jpg" alt="Blog Post 2" class="w-full h-40 object-cover">
+            <div class="p-4">
+                <h3 class="text-sm font-semibold mb-1 text-green-600">Easy Gluten-Free Recipes</h3>
+                <p class="text-gray-600 text-xs mb-1">Simple gluten-free meal ideas.</p>
+                <a href="#" class="text-green-500 hover:text-green-700 hover:underline text-xs transition duration-300 ease-in-out">Read More</a>
+            </div>
+        </div>
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+            <img src="https://www.thelittlebigstore.com.au/wp-content/uploads/2020/04/IMG_20201203_124125-1024x768.jpg" alt="Blog Post 3" class="w-full h-40 object-cover">
+            <div class="p-4">
+                <h3 class="text-sm font-semibold mb-1 text-green-600">Seasonal Organic Produce</h3>
+                <p class="text-gray-600 text-xs mb-1">Best seasonal organic produce.</p>
+                <a href="#" class="text-green-500 hover:text-green-700 hover:underline text-xs transition duration-300 ease-in-out">Read More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+      <!-- FAQ Section -->
+     <!-- FAQ Section -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center mb-8" style="color:#009966">Frequently Asked Questions</h2>
+        <div class="flex flex-col gap-4">
+            <div class="faq-item bg-white p-6 shadow-lg rounded-lg">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-semibold">What is organic food?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-gray-600"></i>
+                </div>
+                <p class="faq-content text-gray-600 mt-4">Organic food is produced without synthetic chemicals, pesticides, or fertilizers. It emphasizes sustainable farming practices and natural growth processes.</p>
+            </div>
+            <div class="faq-item bg-white p-6 shadow-lg rounded-lg">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-semibold">How do I place an order?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-gray-600"></i>
+                </div>
+                <p class="faq-content text-gray-600 mt-4">To place an order, visit our online store, select your desired products, and follow the checkout process. For any issues, contact our support team.</p>
+            </div>
+            <!-- Add more FAQ items as needed -->
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer Section -->
+
+    <!-- Footer content goes here -->
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Information</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-300">About Us</a></li>
+          <li><a href="#" class="text-gray-300">Contact Us</a></li>
+          <li><a href="#" class="text-gray-300">Store Locations</a></li>
+          <li><a href="#" class="text-gray-300">FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">My Account</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-300">Order History</a></li>
+          <li><a href="#" class="text-gray-300">Wish List</a></li>
+          <li><a href="#" class="text-gray-300">Newsletter</a></li>
+          <li><a href="#" class="text-gray-300">Specials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Popular Tags</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-300">Organic</a></li>
+          <li><a href="#" class="text-gray-300">Fresh</a></li>
+          <li><a href="#" class="text-gray-300">Fruits</a></li>
+          <li><a href="#" class="text-gray-300">Vegetables</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center mt-8 text-gray-400">
+      &copy; 2023 Organic Store. All rights reserved.
+    </div>
+
+</footer>
+
+<script>
+const mobileMenuButton = document.getElementById('mobileMenuButton');
+const mobileNav = document.querySelector('.mobile-menu');
+const closeMenu = document.getElementById('closeMenu');
+
+function toggleMenu() {
+    mobileNav.classList.toggle('hidden');
+    document.body.classList.toggle('overflow-hidden');
+}
+
+mobileMenuButton.addEventListener('click', toggleMenu);
+closeMenu.addEventListener('click', toggleMenu);
+
+// Close menu when clicking on a link
+mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', toggleMenu);
+});
+
+
+   document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('contactForm').classList.add('hidden');
+        document.getElementById('contactImage').classList.add('hidden');
+        document.getElementById('successMessage').classList.remove('hidden');
+
+        setTimeout(function() {
+            document.getElementById('contactForm').classList.remove('hidden');
+            document.getElementById('contactImage').classList.remove('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+        }, 3000);
+    });
+  // FAQ section script
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    item.addEventListener('click', function () {
+        item.classList.toggle('active');
+    });
+});
+
+
+</script>
+</body>
+</html>
