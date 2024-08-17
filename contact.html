@@ -18,12 +18,13 @@ nav a:hover {
 }
 
 #closeMenu {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* Smooth rotation effect */
+  }
+  #closeMenu:hover {
+    transform: rotate(90deg); /* Rotate button on hover */
 }
 
-#closeMenu:hover {
-    transform: rotate(90deg);
-}
+
 
 header {
     position: relative;
@@ -31,12 +32,10 @@ header {
 
 @media (min-width: 768px) {
     .header-nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: static;
-        width: auto;
-        background-color: transparent;
+         display: flex;               /* Use flexbox to align items */
+    justify-content: center;    /* Center menu items horizontally */
+    align-items: center;        /* Center menu items vertically */
+    width: 100%; 
     }
 
     .header-nav a {
@@ -44,36 +43,136 @@ header {
     }
 
     .mobile-menu {
-        display: none;
+         display: none;     
     }
 }
 
 @media (max-width: 767px) {
     .header-nav {
-        display: none;
+        display: none;         /* Hide desktop menu on small screens */
     }
 
     .mobile-menu {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: white;
-        z-index: 50;
+        display: flex;        /* Show mobile menu */
+        flex-direction: column; /* Stack menu items vertically */
+        justify-content: center; /* Center items vertically */
+        align-items: center;    /* Center items horizontally */
+        position: fixed;        /* Fixed positioning for full-screen overlay */
+        top: 0;                 /* Align to the top */
+        right: 0;               /* Align to the right */
+        bottom: 0;              /* Align to the bottom */
+        left: 0;                /* Align to the left */
+        background-color: white; /* Background color for visibility */
+        z-index: 50;            /* Ensure it is above other content */
     }
 
     .mobile-menu a {
-        margin: 1rem 0;
+        margin: 1rem 0;        /* Space out menu items vertically */
+        text-decoration: none; /* Remove underline */
+        color: #000;           /* Adjust color as needed */
+        font-weight: bold;     /* Make text bold */
     }
 
     .mobile-menu.hidden {
-        display: none;
+        display: none;        /* Hide menu when not in use */
     }
+}
+/* Consistent padding and margin */
+.section {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  margin: 10px;
+  padding: 15px;
+}
+/* Align text and images */
+.text-center {
+  text-align: center;
+}
+
+.img-center {
+  display: block;
+  margin: 0 auto;
+}
+/* Responsive font sizes */
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+/* Consistent card sizes and spacing */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+/* Add whitespace between sections */
+.section + .section {
+  margin-top: 40px;
+}
+
+/* Ensure space around text and images */
+.text-content, .image-content {
+  padding: 20px;
+}
+/* Button styles */
+button, .btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  button, .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
 }
 
 .section-with-bg {
@@ -154,6 +253,42 @@ header {
         margin-right: 0;
     }
 }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        max-width: 640px; /* Reduce width for medium screens */
+    }
+    .grid-cols-2 {
+        grid-template-columns: 1fr; /* Show one item per row on medium screens */
+    }
+    .gap-6 {
+        gap: 1.5rem; /* Adjust gap between items */
+    }
+    h2 {
+        font-size: 1.5rem; /* Slightly reduce the heading size */
+    }
+}
+  @media (min-width: 640px) and (max-width: 767px) { /* Small screens */
+    .container {
+        max-width: 640px; /* Adjust max-width for smaller screens */
+    }
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns for small screens */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) { /* Medium screens */
+    .container {
+        max-width: 768px; /* Adjust max-width for medium screens */
+    }
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns for medium screens */
+    }
+}
+
+
+
+
  /* Interactive FAQ Styles */
 .faq-item {
     cursor: pointer;
@@ -232,6 +367,7 @@ section {
 
 
 
+
 </style>
 </head>
 <body>
@@ -298,41 +434,38 @@ section {
 
 
 <!-- Contact Form Section -->
-<section class="container mx-auto px-4 py-12">
-   <h2 class="text-3xl font-bold text-center mb-8" style="color:#009966">Contact Us</h2>
-    <div class="flex flex-col md:flex-row justify-center items-start">
+<section class="container mx-auto px-4 py-12 max-w-5xl">
+    <h2 class="text-3xl font-bold text-center mb-8" style="color:#009966">Contact Us</h2>
+    <div class="flex flex-col md:flex-row justify-between items-center md:items-start md:space-x-8">
         <!-- Image -->
-        <div id="contactImage" class="w-full max-w-lg mb-8 md:mb-0 md:mr-8 flex-1">
-            <img src="https://i.pngimg.me/thumb/f/720/91fa560e4f914ed8adc8.jpg" alt="Contact Image" class="w-full h-auto rounded-md object-cover">
+        <div id="contactImage" class="w-full md:w-2/5 lg:w-1/3 mb-8 md:mb-0 flex-shrink-0 md:self-center">
+            <img src="https://i.pngimg.me/thumb/f/720/91fa560e4f914ed8adc8.jpg" alt="Contact Image" class="w-full h-auto rounded-md object-cover max-w-xs mx-auto">
         </div>
-
         <!-- Contact Form -->
-        <form id="contactForm" action="#" method="POST" class="w-full max-w-lg flex-1">
-            <div class="mb-6">
-                <label for="name" class="block text-lg font-bold mb-2">Name</label>
-                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md" required>
+        <form id="contactForm" action="#" method="POST" class="w-full md:w-3/5 lg:w-2/3 max-w-md">
+            <div class="mb-4">
+              <label for="name" class="block text-sm font-medium mb-1"><b>Name</b></label>
+                <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500" required>
             </div>
-            <div class="mb-6">
-                <label for="email" class="block text-lg font-bold mb-2">Email</label>
-                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md" required>
+            <div class="mb-4">
+              <label for="email" class="block text-sm font-medium mb-1"><b>Email</b></label>
+                <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500" required>
             </div>
-            <div class="mb-6">
-                <label for="message" class="block text-lg font-bold mb-2">Message</label>
-                <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md" required></textarea>
+            <div class="mb-4">
+              <label for="message" class="block text-sm font-medium mb-1"><b>Message</b></label>
+                <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500" required></textarea>
             </div>
-            <div class="text-center">
-                <button type="submit" class="px-6 py-3 bg-green-500 text-white font-bold rounded-md">Send Message</button>
+            <div class="text-center md:text-left">
+                <button type="submit" class="px-5 py-2 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">Send Message</button>
             </div>
         </form>
     </div>
-
     <!-- Success Message -->
     <div id="successMessage" class="hidden text-center mt-8">
         <i class="fas fa-check-circle text-green-500 text-4xl mb-2"></i>
         <p class="text-lg font-bold">The form was submitted successfully.</p>
     </div>
 </section>
-
 <script>
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
@@ -349,10 +482,12 @@ section {
         }, 3000);
     });
 </script>
+
+
    <!-- New Section 1: Testimonials -->
   <!-- Testimonials Section -->
 <section class="container mx-auto px-4 py-12 bg-gray-50">
-    <h2 class="text-3xl font-bold text-center mb-8" style="color:#009966">What Our Customers Say</h2>
+    <h2 class="text-3xl font-bold text-center mb-8" style="color:#009966">What Our Customers Says</h2>
     <div class="flex flex-wrap justify-center gap-6">
         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 flex flex-col items-center bg-white shadow-lg rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl">
             <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Customer 1" class="w-20 h-20 rounded-full mb-4 border-4 border-black-500">
@@ -371,33 +506,34 @@ section {
         </div>
     </div>
 </section>
+
 <!-- New Section 2: Blog Highlights -->
 <!-- Blog Highlights Section -->
-<section class="container mx-auto px-4 py-6 bg-gray-50">
-    <h2 class="text-xl font-bold text-center mb-4" style="color:#009966">From Our Blog</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <div class="bg-white shadow-sm rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+<section class="container mx-auto px-4 py-6 bg-gray-50 max-w-7xl">
+    <h2 class="text-3xl font-bold text-center mb-4" style="color:#009966">From Our Blog</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg max-w-sm mx-auto w-full">
             <img src="https://cdn.cdnparenting.com/articles/2018/11/16145019/768948766-H-1024x700.webp" alt="Blog Post 1" class="w-full h-40 object-cover">
             <div class="p-4">
-                <h3 class="text-sm font-semibold mb-1 text-green-600">The Benefits of Organic Eating</h3>
-                <p class="text-gray-600 text-xs mb-1">Discover organic food benefits.</p>
-                <a href="#" class="text-green-500 hover:text-green-700 hover:underline text-xs transition duration-300 ease-in-out">Read More</a>
+                <h3 class="text-lg font-semibold mb-2 text-green-600">Benefits of Organic Eat</h3>
+                <p class="text-gray-600 text-sm mb-3">Discover organic food benefits.</p>
+                <a href="https://www.earthytales.in/blog" class="text-green-500 hover:text-green-700 hover:underline text-sm transition duration-300 ease-in-out">Read More</a>
             </div>
         </div>
-        <div class="bg-white shadow-sm rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg max-w-sm mx-auto w-full">
             <img src="https://img.delicious.com.au/52aYxlWM/del/2015/10/del1015p101-2-16913-1.jpg" alt="Blog Post 2" class="w-full h-40 object-cover">
             <div class="p-4">
-                <h3 class="text-sm font-semibold mb-1 text-green-600">Easy Gluten-Free Recipes</h3>
-                <p class="text-gray-600 text-xs mb-1">Simple gluten-free meal ideas.</p>
-                <a href="#" class="text-green-500 hover:text-green-700 hover:underline text-xs transition duration-300 ease-in-out">Read More</a>
+                <h3 class="text-lg font-semibold mb-2 text-green-600">Easy Gluten-Free Recipes</h3>
+                <p class="text-gray-600 text-sm mb-3">Simple gluten-free meal ideas.</p>
+                <a href="https://iowagirleats.com/" class="text-green-500 hover:text-green-700 hover:underline text-sm transition duration-300 ease-in-out">Read More</a>
             </div>
         </div>
-        <div class="bg-white shadow-sm rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+        <div class="bg-white shadow-sm rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg max-w-sm mx-auto w-full">
             <img src="https://www.thelittlebigstore.com.au/wp-content/uploads/2020/04/IMG_20201203_124125-1024x768.jpg" alt="Blog Post 3" class="w-full h-40 object-cover">
             <div class="p-4">
-                <h3 class="text-sm font-semibold mb-1 text-green-600">Seasonal Organic Produce</h3>
-                <p class="text-gray-600 text-xs mb-1">Best seasonal organic produce.</p>
-                <a href="#" class="text-green-500 hover:text-green-700 hover:underline text-xs transition duration-300 ease-in-out">Read More</a>
+                <h3 class="text-lg font-semibold mb-2 text-green-600">Seasonal Organic Produce</h3>
+                <p class="text-gray-600 text-sm mb-3">Best seasonal organic produce.</p>
+                <a href="https://www.valedalama.net/how-seasonal-local-and-organic-food-can-significantly-improve-our-lives/" class="text-green-500 hover:text-green-700 hover:underline text-sm transition duration-300 ease-in-out">Read More</a>
             </div>
         </div>
     </div>
