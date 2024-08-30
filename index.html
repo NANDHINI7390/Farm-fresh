@@ -15,29 +15,41 @@
 
   <title>Last40 Store</title>
   <style>
-    .header {
-  position: relative;
-  z-index: 0; /* Ensure header is below the hero section */
-  margin-bottom: 1rem; /* Add margin to ensure spacing */
+   /* Adjust header styles */
+.header {
+  position: fixed; /* Use fixed positioning */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; /* Ensure header has a background */
+  z-index: 1000; /* Ensure header is above hero section */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds shadow */
+  margin-bottom: 0; /* Remove bottom margin to prevent spacing issues */
+  height: 60px; /* Fixed height if necessary */
 }
-    .hero-section {
+   /* Refine hero-section styles */
+.hero-section {
   position: relative;
-  z-index: 1;
-  background-color: #fff; /* Or adjust based on your design */
-  padding-top: 1rem; /* Add padding to avoid overlap */
+  z-index: 1; /* Ensure hero section is above the header */
+  background-color: #fff; /* Adjust if needed */
+  padding-top: 70px; /* Ensure it clears the fixed header */
+  padding-bottom: 1rem; /* Adjust for visual spacing */
 }
     /* Responsive adjustments */
+/* Ensure the hero section padding adjusts for smaller screens */
 @media (max-width: 768px) {
   .hero-section {
-    padding-top: 2rem;
+    padding-top: 80px; /* Add extra padding if header size changes */
   }
 }
 
+/* Adjust media query styles */
 @media (max-width: 480px) {
   .hero-section {
-    padding-top: 3rem;
+    padding-top: 90px; /* Ensure padding clears the header */
   }
 }
+
      /* Custom styles for the thank you message */
         #thank-you-message {
             display: none;
@@ -69,8 +81,9 @@
     z-index: 1000; /* Ensures it's above other content */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds shadow */
 }
+/* Adjust body margin-top to account for the header height */
 body {
-    margin-top: 60px; /* Adjust based on header height */
+  margin-top: 60px; /* Match this to header height */
 }
 
     /* Apply hover effect only to non-active menu items in mobile view */
@@ -83,10 +96,14 @@ body {
 
 
 
-   /* Mobile Menu Styles */
+   /* Refine mobile menu visibility and transformations */
 #mobile-menu {
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
+  position: fixed; /* Ensure the menu is fixed on the screen */
+  top: 0;
+  right: 0;
+  z-index: 1001; /* Ensure the mobile menu is above all content */
 }
 
 #mobile-menu.menu-visible {
@@ -126,14 +143,15 @@ body {
     /* Add this to your CSS file for hover effect and active page styles */
 
 /* Hover effect for header menu items */
+/* Adjust hover effect and active page styles */
 .header-menu a:hover {
-  color: #4CAF50; /* Change to your desired hover color */
+  color: #4CAF50; /* Use consistent hover color */
 }
 
 /* Active page menu item style */
 .header-menu a.active {
   color: black;
-  border-bottom: 2px solid #4CAF50; /* Green underline */
+  border-bottom: 2px solid #4CAF50; /* Ensure underline matches the hover effect */
 }
 
     /* Assuming the button has a class of 'btn-shop-now' */
@@ -210,25 +228,20 @@ body {
       z-index: 1;
     }
 
-    .product-card {
-      background-color: rgba(127, 186, 0, 0.7);
-      background-image: url('https://images.unsplash.com/photo-1490885578174-acda8905c2c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');
-      background-size: cover;
-      background-position: center;
-      background-blend-mode: overlay;
-      width: 100%;
-      aspect-ratio: 5/6;
-      border-radius: 10px;
-      padding: 20px;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;ov
-      justify-content: center;
-      position: relative;
-      margin-bottom: 20px;
-    }
-
+    /* Adjust product card styles for better responsiveness */
+.product-card {
+  background-color: rgba(127, 186, 0, 0.7);
+  background-image: url('your-image-url');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  max-width: 300px; /* Add a max-width for consistency */
+  aspect-ratio: 5/6; /* Adjust as needed */
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  margin: 1rem auto; /* Centering the cards */
+}
     .product-card::before {
       content: '';
       position: absolute;
@@ -309,11 +322,13 @@ body {
       }
     }
 
-    @media (max-width: 768px) {
-      .product-card {
-        aspect-ratio: 1;
-      }
-    }
+    /* Additional media queries for responsive design */
+@media (max-width: 768px) {
+  .product-card {
+    aspect-ratio: 1; /* Ensure correct ratio on smaller screens */
+  }
+}
+
     .card {
       background-color: #fff;
       border-radius: 10px;
@@ -609,16 +624,16 @@ body {
 
 
 <!-- Hero Section -->
-<section class="bg-cover bg-center py-12 sm:py-16 lg:py-20 relative -mt-4 sm:-mt-6 lg:-mt-8">
+<section class="bg-cover bg-center relative pt-10 sm:pt-10 md:pt-24 lg:pt-28 xl:pt-32 pb-8 sm:pb-12 lg:pb-16">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="slider overflow-hidden">
       <div class="slides flex transition-transform duration-300 ease-in-out">
         <div class="slide w-full flex-shrink-0">
           <div class="flex flex-col lg:flex-row items-center justify-between">
             <div class="w-full lg:w-1/2 lg:pr-12 mb-8 lg:mb-0">
-              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">Fresh Organic From The Farm</h1>
-              <p class="text-gray-700 text-lg mb-6 max-w-xl">Enjoy the best quality fresh produce directly from the farm to your table. Experience the difference with our organic products.</p>
-             <a href="#" class="bg-green-600 text-white px-6 py-2 rounded-lg inline-block hover:bg-green-700 transition-colors duration-300 text-base font-semibold">Shop Now</a>
+              <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 lg:mb-5 leading-tight">Fresh Organic From The Farm</h1>
+              <p class="text-gray-700 text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 lg:mb-6 max-w-xl">Enjoy the best quality fresh produce directly from the farm to your table. Experience the difference with our organic products.</p>
+              <a href="#" class="bg-green-600 text-white px-5 py-2 sm:px-6 sm:py-2 rounded-lg inline-block hover:bg-green-700 transition-colors duration-300 text-base font-semibold">Shop Now</a>
             </div>
             <div class="w-full lg:w-1/2 flex justify-center items-center">
               <img src="https://images.unsplash.com/photo-1548808918-a33260f83b25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlMjBmb29kfGVufDB8fDB8fHww" alt="Fresh Produce" class="w-full max-w-lg h-auto object-cover rounded-xl shadow-lg">
@@ -628,9 +643,9 @@ body {
         <div class="slide w-full flex-shrink-0">
           <div class="flex flex-col lg:flex-row items-center justify-between">
             <div class="w-full lg:w-1/2 lg:pr-12 mb-8 lg:mb-0">
-              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">Pure Organic Goodness from the Farm</h1>
-              <p class="text-gray-700 text-lg mb-6 max-w-xl">Savor the freshness of our farm-to-table organic produce. Nourish your body with nature's finest offerings.</p>
-             <a href="#" class="bg-green-600 text-white px-6 py-2 rounded-lg inline-block hover:bg-green-700 transition-colors duration-300 text-base font-semibold">Shop Now</a>
+              <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 lg:mb-5 leading-tight">Pure Organic Goodness from the Farm</h1>
+              <p class="text-gray-700 text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 lg:mb-6 max-w-xl">Savor the freshness of our farm-to-table organic produce. Nourish your body with nature's finest offerings.</p>
+              <a href="#" class="bg-green-600 text-white px-5 py-2 sm:px-6 sm:py-2 rounded-lg inline-block hover:bg-green-700 transition-colors duration-300 text-base font-semibold">Shop Now</a>
             </div>
             <div class="w-full lg:w-1/2 flex justify-center items-center">
               <img src="https://i.ibb.co/7n12Jb7/image-removebg-preview.png" alt="Fresh Produce" class="w-full max-w-lg h-auto object-contain rounded-xl">
@@ -639,186 +654,175 @@ body {
         </div>
       </div>
     </div>
-    <div class="dots flex justify-center mt-8">
+    <div class="dots flex justify-center mt-6">
       <button class="dot w-3 h-3 bg-gray-300 rounded-full mx-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors duration-200" aria-label="Slide 1"></button>
       <button class="dot w-3 h-3 bg-gray-300 rounded-full mx-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors duration-200" aria-label="Slide 2"></button>
     </div>
   </div>
 </section>
 
+
+
+
   <!-- Product Categories -->
-
-  <section class="container mx-auto mt-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1592918489661-b098eb4e343c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlc2glMjBmcnVpdHN8ZW58MHx8MHx8fDA%3D" alt="Product 1">
-        <h2 style="font-weight:bold;">Fresh Fruits</h2>
-        <p>Delicious and nutritious fruits straight from the farm to your table.</p>
-        <a href="#" style="background-color: #10B981;">Shop Fruits</a>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1590685006710-2b478c69b26b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fGZyZXNoJTIwdmVnZXRhYmxlc3xlbnwwfHwwfHx8MA%3D%3D" alt="Product 2">
-        <h2 style="font-weight:bold;">Purely Organic</h2>
-        <p>Explore our selection of purely organic products, sustainably grown for your well-being.</p>
-        <a href="#" style="background-color: #10B981;">Shop Organic</a>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1517260739337-6799d239ce83?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlc2glMjBmcnVpdHN8ZW58MHx8MHx8fDA%3D" alt="Product 3">
-        <h2 style="font-weight:bold;">Fresh Vegetables</h2>
-        <p>Discover the freshness of our hand-picked vegetables, ready to enhance your recipes.</p>
-        <a href="#" style="background-color: #10B981;">Shop Vegetables</a>
-      </div>
-    </div>
-  </section>
-
-
-
-
-
 
 
   <!-- Featured Products -->
-  <section class="best-selling bg-gray-100 py-16"  style="background-image: url('https://img.freepik.com/free-photo/white-simple-textured-design-background_15851597.htm'); background-size: cover; background-position: center;">>
-    <div class="container mx-auto px-4">
-      <h2 class="text-2xl font-bold mb-8 text-center">Best Selling Products</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <!-- Product 1 -->
-        <div class="product bg-white rounded-lg shadow-md overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1630563451961-ac2ff27616ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlfGVufDB8fDB8fHww" alt="Product Image" class="w-full h-64 object-cover">
-          <div class="overlay">
-            <a href="#" class="btn-shop-now">Shop Now</a>
-          </div>
-          <div class="product-details">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold mb-2">Organic Apples</h3>
-              <p class="text-gray-700 mb-2">$10.00</p>
-              <div class="flex justify-center mb-2">
-                <!-- Star rating -->
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-yellow-400">&#9734;</span>
-              </div>
+<section class="best-selling bg-gray-100 py-16" style="background-image: url('https://img.freepik.com/free-photo/white-simple-textured-design-background_15851597.htm'); background-size: cover; background-position: center;">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl font-bold mb-8 text-center">Best Selling Products</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+      <!-- Product 1 -->
+      <div class="product bg-white rounded-lg shadow-md overflow-hidden mx-auto" style="width: 90%; max-width: 300px;">
+        <img src="https://images.unsplash.com/photo-1630563451961-ac2ff27616ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlfGVufDB8fDB8fHww" alt="Product Image" class="w-full h-48 object-cover">
+        <div class="overlay">
+          <a href="#" class="btn-shop-now">Shop Now</a>
+        </div>
+        <div class="product-details">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold mb-2">Organic Apples</h3>
+            <p class="text-gray-700 mb-2">$10.00</p>
+            <div class="flex justify-center mb-2">
+              <!-- Star rating -->
+              <span class="text-yellow-400">&#9733;</span>
+              <span class="text-yellow-400">&#9733;</span>
+              <span class="text-yellow-400">&#9733;</span>
+              <span class="text-yellow-400">&#9733;</span>
+              <span class="text-yellow-400">&#9734;</span>
             </div>
           </div>
         </div>
-        <!-- Product 2 -->
-        <div class="product bg-white rounded-lg shadow-md overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1639427444459-85a1b6ac2d68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D" alt="Product Image" class="w-full h-64 object-cover">
-          <div class="overlay">
-            <a href="#" class="btn-shop-now">Shop Now</a>
-          </div>
-          <div class="product-details">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold mb-2">Organic Carrots</h3>
-              <p class="text-gray-700 mb-2">$5.00</p>
-              <div class="flex justify-center mb-2">
-                <!-- Star rating -->
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-yellow-400">&#9734;</span>
-                <span class="text-yellow-400">&#9734;</span>
-              </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="product bg-white rounded-lg shadow-md overflow-hidden mx-auto" style="width: 90%; max-width: 300px;">
+        <img src="https://images.unsplash.com/photo-1639427444459-85a1b6ac2d68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D" alt="Product Image" class="w-full h-48 object-cover">
+        <div class="overlay">
+          <a href="#" class="btn-shop-now">Shop Now</a>
+        </div>
+        <div class="product-details">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold mb-2">Organic Carrots</h3>
+            <p class="text-gray-700 mb-2">$5.00</p>
+            <div class="flex justify-center mb-2">
+              <!-- Star rating -->
+              <span class="text-yellow-400">&#9733;</span>
+              <span class="text-yellow-400">&#9733;</span>
+              <span class="text-yellow-400">&#9733;</span>
+              <span class="text-yellow-400">&#9734;</span>
+              <span class="text-yellow-400">&#9734;</span>
             </div>
           </div>
         </div>
-        <!-- Product 3 -->
-        <div class="product bg-white rounded-lg shadow-md overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1534620808146-d33bb39128b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlYWR8ZW58MHx8MHx8fDA%3D" alt="Product Image" class="w-full h-64 object-cover">
-          <div class="overlay">
-            <a href="#" class="btn-shop-now">Shop Now</a>
-          </div>
-          <div class="product-details">
-            <div class="p-4">
-              <h3 class="text-lg font-semibold mb-2">Organic Bread</h3>
-              <p class="text-gray-700 mb-2">$8.00</p>
-              <div class="flex justify-center mb-2">
-                <!-- Star rating -->
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-yellow-400">&#9733;</span>
-                <span class="text-yellow-400">&#9734;</span>
-                <span class="text-yellow-400">&#9734;</span>
-                <span class="text-yellow-400">&#9734;</span>
-              </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="product bg-white rounded-lg shadow-md overflow-hidden mx-auto" style="width: 90%; max-width: 300px;">
+        <img src="https://images.unsplash.com/photo-1534620808146-d33bb39128b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlYWR8ZW58MHx8MHx8fDA%3D" alt="Product Image" class="w-full h-48 object-cover">
+        <div class="overlay">
+          <a href="#" class="btn-shop-now">Shop Now</a>
+        </div>
+        <div class="product-details">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold mb-2">Organic Bread</h3>
+            <p class="text-gray-700 mb-2">$8.00</p>
+            <div class="flex justify-center mb-2">
+              <!-- Star rating -->
+              <span class="text-yellow-400">&#9733;</span>
+              <span class="text-yellow-400">&#9733;</span>
+              <span class="text-yellow-400">&#9734;</span>
+              <span class="text-yellow-400">&#9734;</span>
+              <span class="text-yellow-400">&#9734;</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
 
 
 
 
   <!-- Deals of the Day -->
-  <section class="py-16">
-    <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold mb-4">Deals of the Day</h2>
-      <p class="text-gray-700 mb-6">Special offers on our best products. Don't miss out!</p>
+<section class="py-12">
+  <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold mb-4">Deals of the Day</h2>
+    <p class="text-gray-700 mb-6">Special offers on our best products. Don't miss out!</p>
 
-      <div class="flex flex-wrap justify-center mb-6">
-        <!-- Product 1 -->
-        <div class="flex flex-col items-center max-w-xs m-4 bg-white rounded-lg shadow-lg p-4">
-          <img src="https://plus.unsplash.com/premium_photo-1667051230160-5906f5683a59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D" alt="Deal Product" class="w-full h-48 object-cover mb-4 rounded-lg">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Fresh Red Apple</h3>
-            <div class="text-4xl font-bold text-green-500 mb-2">-50%</div>
-            <p class="text-gray-700">$10.00</p>
-            <a href="#" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Shop Now</a>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="flex flex-col items-center max-w-xs m-4 bg-white rounded-lg shadow-lg p-4">
-          <img src="https://images.unsplash.com/photo-1490885578174-acda8905c2c6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjluZWFwcGxlfGVufDB8fDB8fHww" alt="Deal Product" class="w-full h-48 object-cover mb-4 rounded-lg">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Organic Pineapple Bunch</h3>
-            <div class="text-4xl font-bold text-green-500 mb-2">-30%</div>
-            <p class="text-gray-700">$7.00</p>
-            <a href="#" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Shop Now</a>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="flex flex-col items-center max-w-xs m-4 bg-white rounded-lg shadow-lg p-4">
-          <img src="https://plus.unsplash.com/premium_photo-1663855531381-f9c100b3c48f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj0ZXJtZWxvbnxlbnwwfHwwfHx8MA%3D%3D" alt="Deal Product" class="w-full h-48 object-cover mb-4 rounded-lg">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Juicy Watermelon Slice</h3>
-            <div class="text-4xl font-bold text-green-500 mb-2">-20%</div>
-            <p class="text-gray-700">$12.00</p>
-            <a href="#" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Shop Now</a>
-          </div>
+    <div class="flex flex-wrap justify-center gap-10 mb-6">
+      <!-- Product 1 -->
+      <div 
+        style="display: flex; flex-direction: column; align-items: center; max-width: 220px; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 8px; transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;"
+        onmouseover="this.style.backgroundColor='rgb(234, 244, 228)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.2)';"
+        onmouseout="this.style.backgroundColor='#fff'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 10px rgba(0, 0, 0, 0.1)';"
+      >
+        <img src="https://plus.unsplash.com/premium_photo-1667051230160-5906f5683a59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj%3D" alt="Deal Product" style="width: 100%; height: 140px; object-fit: cover; margin-bottom: 8px; border-radius: 8px;">
+        <div style="text-align: center;">
+          <h3 class="text-lg font-semibold mb-1">Fresh Red Apple</h3>
+          <div style="font-size: 1.5rem; font-weight: bold; color: #38a169; margin-bottom: 8px;">-50%</div>
+          <p style="color: #4a5568;">$10.00</p>
+          <a href="#" style="margin-top: 8px; display: inline-block; background-color: #38a169; color: #fff; padding: 6px 12px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease; text-align: center;">Shop Now</a>
         </div>
       </div>
 
-      <div class="flex justify-center sm:justify-center space-x-4 sm:space-x-6 mt-6">
-         <!-- Countdown Timer -->
-    <div class="container mx-auto text-center">
-        <h2 class="text-2xl font-bold mb-4">Countdown Timer</h2>
-        <div class="countdown-container">
-            <div class="countdown-item">
-                <p id="days">45</p>
-                <p>Days</p>
-            </div>
-            <div class="countdown-item">
-                <p id="hours">15</p>
-                <p>Hours</p>
-            </div>
-            <div class="countdown-item">
-                <p id="minutes">33</p>
-                <p>Minutes</p>
-            </div>
-            <div class="countdown-item">
-                <p id="seconds">49</p>
-                <p>Seconds</p>
-            </div>
+      <!-- Product 2 -->
+      <div 
+        style="display: flex; flex-direction: column; align-items: center; max-width: 220px; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 8px; transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;"
+        onmouseover="this.style.backgroundColor='rgb(234, 244, 228)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.2)';"
+        onmouseout="this.style.backgroundColor='#fff'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 10px rgba(0, 0, 0, 0.1)';"
+      >
+        <img src="https://images.unsplash.com/photo-1490885578174-acda8905c2c6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjluZWFwcGxlfGVufDB8fDB8fHww" alt="Deal Product" style="width: 100%; height: 140px; object-fit: cover; margin-bottom: 8px; border-radius: 8px;">
+        <div style="text-align: center;">
+          <h3 class="text-lg font-semibold mb-1">Organic Pineapple</h3>
+          <div style="font-size: 1.5rem; font-weight: bold; color: #38a169; margin-bottom: 8px;">-30%</div>
+          <p style="color: #4a5568;">$7.00</p>
+          <a href="#" style="margin-top: 8px; display: inline-block; background-color: #38a169; color: #fff; padding: 6px 12px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease; text-align: center;">Shop Now</a>
         </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div 
+        style="display: flex; flex-direction: column; align-items: center; max-width: 220px; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); padding: 8px; transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;"
+        onmouseover="this.style.backgroundColor='rgb(234, 244, 228)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.2)';"
+        onmouseout="this.style.backgroundColor='#fff'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 10px rgba(0, 0, 0, 0.1)';"
+      >
+        <img src="https://plus.unsplash.com/premium_photo-1663855531381-f9c100b3c48f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj0ZXJtZWxvbnxlbnwwfHwwfHx8MA%3D%3D" alt="Deal Product" style="width: 100%; height: 140px; object-fit: cover; margin-bottom: 8px; border-radius: 8px;">
+        <div style="text-align: center;">
+          <h3 class="text-lg font-semibold mb-1">Juicy Watermelon Slice</h3>
+          <div style="font-size: 1.5rem; font-weight: bold; color: #38a169; margin-bottom: 8px;">-20%</div>
+          <p style="color: #4a5568;">$12.00</p>
+          <a href="#" style="margin-top: 8px; display: inline-block; background-color: #38a169; color: #fff; padding: 6px 12px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease; text-align: center;">Shop Now</a>
+        </div>
+      </div>
     </div>
+
+    <!-- Countdown Timer -->
+    <div class="container mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">Countdown Timer</h2>
+      <div class="countdown-container" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; text-align: center;">
+        <div class="countdown-item" style="flex: 1; min-width: 100px;">
+          <p id="days" style="font-size: 1.5rem; font-weight: bold;">45</p>
+          <p>Days</p>
+        </div>
+        <div class="countdown-item" style="flex: 1; min-width: 100px;">
+          <p id="hours" style="font-size: 1.5rem; font-weight: bold;">15</p>
+          <p>Hours</p>
+        </div>
+        <div class="countdown-item" style="flex: 1; min-width: 100px;">
+          <p id="minutes" style="font-size: 1.5rem; font-weight: bold;">33</p>
+          <p>Minutes</p>
+        </div>
+        <div class="countdown-item" style="flex: 1; min-width: 100px;">
+          <p id="seconds" style="font-size: 1.5rem; font-weight: bold;">22</p>
+          <p>Seconds</p>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
 
 
 
@@ -847,64 +851,63 @@ body {
 </section>
 
   <!-- Product Listing -->
-  <section class="py-16">
-    <div class="container mx-auto">
-      <h2 class="text-2xl font-bold mb-8 text-center">Product Listing</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
-        <!-- Product 1 -->
-        <div class="relative group">
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1627764611688-2d07255e995e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlMjB0ZWF8ZW58MHx8MHx8fDA%3D" alt="Product Image" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105">
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 bg-black bg-opacity-50 text-white text-center">
-            <div>
-              <h3 class="text-lg font-semibold">Organic Powdered Tea</h3>
-              <p class="text-gray-300">$15.99</p>
-              <div class="flex justify-center mt-2 text-yellow-400">
-                &#9733;&#9733;&#9733;&#9733;&#9733;
-              </div>
-              <a href="#" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Shop Now</a>
+<section class="py-8 lg:py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl lg:text-3xl font-bold mb-8 text-center">Product Listing</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
+      <!-- Product 1 -->
+      <div class="relative group mx-auto w-full max-w-sm">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1627764611688-2d07255e995e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlMjB0ZWF8ZW58MHx8MHx8fDA%3D" alt="Product Image" class="w-full h-48 sm:h-56 object-cover transition duration-300 transform group-hover:scale-105">
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 bg-black bg-opacity-50 text-white text-center">
+          <div>
+            <h3 class="text-lg font-semibold">Organic Powdered Tea</h3>
+            <p class="text-gray-300">$15.99</p>
+            <div class="flex justify-center mt-2 text-yellow-400">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
             </div>
+            <a href="#" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Shop Now</a>
           </div>
         </div>
+      </div>
 
-        <!-- Product 2 -->
-        <div class="relative group">
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1587734195342-39d4b9b2ff05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlJTIwYmVhbnN8ZW58MHx8MHx8fDA%3D" alt="Product Image" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105">
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 bg-black bg-opacity-50 text-white text-center">
-            <div>
-              <h3 class="text-lg font-semibold">Premium Coffee Beans</h3>
-              <p class="text-gray-300">$29.99</p>
-              <div class="flex justify-center mt-2 text-yellow-400">
-                &#9733;&#9733;&#9733;&#9733;&#9734;
-              </div>
-              <a href="#" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Shop Now</a>
+      <!-- Product 2 -->
+      <div class="relative group mx-auto w-full max-w-sm">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1587734195342-39d4b9b2ff05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlJTIwYmVhbnN8ZW58MHx8MHx8fDA%3D" alt="Product Image" class="w-full h-48 sm:h-56 object-cover transition duration-300 transform group-hover:scale-105">
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 bg-black bg-opacity-50 text-white text-center">
+          <div>
+            <h3 class="text-lg font-semibold">Premium Coffee Beans</h3>
+            <p class="text-gray-300">$29.99</p>
+            <div class="flex justify-center mt-2 text-yellow-400">
+              &#9733;&#9733;&#9733;&#9733;&#9734;
             </div>
+            <a href="#" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Shop Now</a>
           </div>
         </div>
+      </div>
 
-        <!-- Product 3 -->
-        <div class="relative group">
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <img src="https://plus.unsplash.com/premium_photo-1664392163836-0129faa6d5f6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj0JTIwc2VlZHMlMjBpbiUyMGN1cHxlbnwwfHwwfHx8MA%3D%3D" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105">
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 bg-black bg-opacity-50 text-white text-center">
-            <div>
-              <h3 class="text-lg font-semibold">Organically Grown Grains</h3>
-              <p class="text-gray-300">$99.99</p>
-              <div class="flex justify-center mt-2 text-yellow-400">
-                &#9733;&#9733;&#9733;&#9733;&#9733;
-              </div>
-              <a href="#" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Shop Now</a>
+      <!-- Product 3 -->
+      <div class="relative group mx-auto w-full max-w-sm">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="https://plus.unsplash.com/premium_photo-1664392163836-0129faa6d5f6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygj0JTIwc2VlZHMlMjBpbiUyMGN1cHxlbnwwfHwwfHx8MA%3D%3D" alt="Product Image" class="w-full h-48 sm:h-56 object-cover transition duration-300 transform group-hover:scale-105">
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 bg-black bg-opacity-50 text-white text-center">
+          <div>
+            <h3 class="text-lg font-semibold">Organically Grown Grains</h3>
+            <p class="text-gray-300">$99.99</p>
+            <div class="flex justify-center mt-2 text-yellow-400">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
             </div>
+            <a href="#" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Shop Now</a>
           </div>
         </div>
-
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
 <!-- Newsletter Subscription -->
