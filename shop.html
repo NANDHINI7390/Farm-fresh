@@ -169,98 +169,58 @@
             margin: 0 auto;
         }
 
-#closeMenu {
-    transition: transform 0.3s ease;
-}
-
-#closeMenu:hover {
-    transform: rotate(90deg);
-}
-      @media (min-width: 768px) {
-   nav {
-    transition: all 0.3s ease-in-out;
-}
-        nav.flex {
-    display: flex !important;
-}
-        nav a {
-    transition: color 0.3s ease;
-}
-
-    nav a {
-        font-size: 1.5 rem;
-        margin-bottom: 1.5 rem;
+ .nav-link {
+        color: #65676b;
     }
-}
-      nav a:hover {
-    color: #10B981; /* Tailwind's green-500 */
-}
-      @media (max-width: 767px) {
-    nav.flex {
-        display: flex !important;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        width: 100vw;
-        background-color: white;
+    .nav-link:hover {
+        color: #10B981;
     }
-        .active-link {
-    color: black !important;
-    border-bottom: 2px solid #10B981;
-    padding-bottom: 2px;
-    font-weight: bold;
-}
-       nav a {
-    transition: color 0.3s ease, border-bottom-color 0.3s ease;
-    color: #65676b;
-    font-weight: bold;
-    text-decoration: none;
-    padding-bottom: 0.5em;
-    border-bottom: 2px solid transparent;
-}
-
-nav a:hover {
-    color: #10B981 !important; /* Green color, using !important to override any other styles */
-    border-bottom-color: #10B981 !important;
-}
-
-nav a.active {
-    color: black !important;
-    border-bottom-color: #10B981 !important;
-}
-
-/* Add this to ensure hover works on mobile too */
-@media (max-width: 767px) {
-    nav a:hover {
-        color: #10B981 !important;
-        border-bottom-color: #10B981 !important;
+    .nav-link.active {
+        color: #65676b;
+        text-decoration: underline;
+        text-decoration-color: #10B981;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.5em;
     }
-}
+    @media (min-width: 768px) {
+        .nav-link {
+            font-weight: bold;
+        }
+    }
+    #closeMenu {
+        transform-origin: center; /* Ensure the rotation happens from the center */
+        transition: transform 0.3s ease;
+    }
+    .menu-opened #closeMenu {
+        transform: rotate(90deg); /* Rotate by 90 degrees when the menu is open */
+    }
+    #closeMenu:hover {
+        transform: rotate(180deg); /* Rotate 180 degrees on hover */
+        transition: transform 0.3s ease;
+    }
     </style>
 </head>
 <body class="bg-gray-100">
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="h-12">
-           <nav class="hidden md:flex md:items-center md:space-x-4 fixed inset-0 bg-white z-50 flex-col md:flex-row md:static md:bg-transparent justify-center items-center">
-    <a href="index.html" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style="font-weight:bold;color:#65676b">Home</a>
-   <a href="shop.html" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500 " style=" text-decoration: underline;text-decoration-color: green;text-decoration-thickness:2px; text-underline-offset: 0.5em;font-weight:bold;">Shop</a>
-    <a href="blog.html" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style="font-weight:bold;color:#65676b">Blog</a>
-    <a href="contact.html" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style="font-weight:bold;color:#65676b">Contact Us</a>
-    <button id="closeMenu" class="absolute top-4 right-4 text-3xl md:hidden">&times;</button>
-</nav>
-            <div class="flex space-x-4 text-gray-600">
-                <a href="#"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-            </div>
-           <button class="md:hidden text-gray-600 text-2xl" id="mobileMenuButton">
-    <i class="fas fa-bars"></i>
-</button>
+   <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="h-12">
+        <nav class="hidden md:flex md:items-center md:space-x-7 fixed inset-0 bg-white z-50 flex-col md:flex-row md:static md:bg-transparent justify-center items-center">
+            <a href="index.html" class="nav-link text-l mb-6 md:mb-0 md:text-base">Home</a>
+            <a href="shop.html" class="nav-link text-l mb-6 md:mb-0 md:text-base active" style="color:black;">Shop</a>
+            <a href="blog.html" class="nav-link text-l mb-6 md:mb-0 md:text-base">Blog</a>
+            <a href="contact.html" class="nav-link text-l mb-6 md:mb-0 md:text-base">Contact Us</a>
+            <button id="closeMenu" class="absolute top-4 right-4 text-3xl md:hidden">&times;</button>
+        </nav>
+        <div class="flex space-x-4 text-gray-600">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
         </div>
-    </header>
-
+        <button class="md:hidden text-gray-600 text-2xl" id="mobileMenuButton">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
     <main class="container mx-auto px-4 py-8">
         <h1 class="text-3xl md:text-4xl font-bold mb-6">Find The Best Food Around You</h1>
 
@@ -608,7 +568,7 @@ nav a.active {
         });
 
         // Mobile menu toggle
-       const mobileMenuButton = document.getElementById('mobileMenuButton');
+     const mobileMenuButton = document.getElementById('mobileMenuButton');
 const nav = document.querySelector('nav');
 const closeMenu = document.getElementById('closeMenu');
 
@@ -616,7 +576,9 @@ function toggleMenu() {
     nav.classList.toggle('flex');
     nav.classList.toggle('hidden');
     document.body.classList.toggle('overflow-hidden');
+    document.body.classList.toggle('menu-opened'); // Toggle the menu-opened class to apply the rotation
 }
+
 mobileMenuButton.addEventListener('click', toggleMenu);
 closeMenu.addEventListener('click', toggleMenu);
 

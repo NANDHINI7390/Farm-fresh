@@ -8,6 +8,42 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+      .nav-link {
+        color: #65676b;
+    }
+    .nav-link:hover {
+        color: #10B981;
+    }
+    .nav-link.active {
+        color: #65676b;
+        text-decoration: underline;
+        text-decoration-color: #10B981;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.5em;
+    }
+    @media (min-width: 768px) {
+        .nav-link {
+            font-weight: bold;
+        }
+    }
+    #closeMenu {
+        transform-origin: center; /* Ensure the rotation happens from the center */
+        transition: transform 0.3s ease;
+
+    }
+    .menu-opened #closeMenu {
+        transform: rotate(90deg); /* Rotate by 90 degrees when the menu is open */
+    }
+    #closeMenu:hover {
+        transform: rotate(180deg); /* Rotate 180 degrees on hover */
+        transition: transform 0.3s ease;
+    }
+      .toggle-btn {
+    background-color: ; /* Green background on mobile toggle icon */
+    /* other styles */
+}
+
+
 
         body {
             background-color: #ffffff; /* White */
@@ -58,9 +94,7 @@
        .header-text {
     margin-top: 1rem;
 }
-.header-text h1 {
-    margin: 0;
-}
+
 .header-full-width {
     background-color: #2ecc71;
     color: #ffffff;
@@ -326,30 +360,30 @@
     </style>
 </head>
 <body>
-  <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="h-12">
-           <nav class="hidden md:flex md:items-center md:space-x-4 fixed inset-0 bg-white z-50 flex-col md:flex-row md:static md:bg-transparent justify-center items-center">
-    <a href="index.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Home</a>
-   <a href="shop.html" class="nav-link text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500 " >Shop</a>
-    <a href="blog.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500"style=" text-decoration: underline;text-decoration-color: green;text-decoration-thickness:2px; text-underline-offset: 0.5em;font-weight:bold;">Blog</a>
-    <a href="contact.html" class="text-2xl mb-6 md:mb-0 md:text-base hover:text-green-500">Contact Us</a>
-    <button id="closeMenu" class="absolute top-4 right-4 text-3xl md:hidden">&times;</button>
-</nav>
-            <div class="flex space-x-4 text-gray-600">
-                <a href="#"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-            </div>
-           <button class="md:hidden text-gray-600 text-2xl" id="mobileMenuButton">
-    <i class="fas fa-bars"></i>
-</button>
+ <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="h-12">
+        <nav class="hidden md:flex md:items-center md:space-x-7 fixed inset-0 bg-white z-50 flex-col md:flex-row md:static md:bg-transparent justify-center items-center">
+            <a href="index.html" class="nav-link text-l mb-6 md:mb-0 md:text-base">Home</a>
+            <a href="shop.html" class="nav-link text-l mb-6 md:mb-0 md:text-base ">Shop</a>
+            <a href="blog.html" class="nav-link text-l mb-6 md:mb-0 md:text-base active" style="color:black">Blog</a>
+            <a href="contact.html" class="nav-link text-l mb-6 md:mb-0 md:text-base">Contact Us</a>
+            <button id="closeMenu"  class="absolute top-4 right-4 text-3xl md:hidden" style="background-Color:transparent;color:black;">&times;</button>
+        </nav>
+        <div class="flex space-x-4 text-gray-600">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
         </div>
-    </header>
+        <button class="md:hidden text-gray-600 text-2xl" style="background-Color:transparent" id="mobileMenuButton">
+            <i class="fas fa-bars" ></i>
+        </button>
+    </div>
+</header>
     <!-- Header Section -->
     <!-- Modify your header section like this -->
 
-<header class="header-slide-in">
+<div class="header-slide-in">
     <div class="header-content">
         <img src="https://i.ibb.co/BzVvRWC/image.png" alt="Pasta Image">
         <div class="card">
@@ -361,7 +395,7 @@
     <div class="header-full-width">
         <p>Gluten Free • Gluten Free • Gluten Free • Gluten Free • Gluten Free • Gluten Free</p>
     </div>
-</header>
+
 
     <!-- Products Section -->
 <!-- Products Section -->
