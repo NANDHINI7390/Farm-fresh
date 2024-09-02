@@ -16,17 +16,36 @@
   <title>Last40 Store</title>
   <style>
    /* Adjust header styles */
-.header {
-  position: fixed; /* Use fixed positioning */
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff; /* Ensure header has a background */
-  z-index: 1000; /* Ensure header is above hero section */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds shadow */
-  margin-bottom: 0; /* Remove bottom margin to prevent spacing issues */
-  height: 60px; /* Fixed height if necessary */
-}
+      .nav-link {
+        color: #65676b;
+    }
+    .nav-link:hover {
+        color: #10B981;
+    }
+    .nav-link.active {
+        color: #65676b;
+        text-decoration: underline;
+        text-decoration-color: #10B981;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.5em;
+    }
+    @media (min-width: 768px) {
+        .nav-link {
+            font-weight: bold;
+        }
+    }
+    #closeMenu {
+        transform-origin: center; /* Ensure the rotation happens from the center */
+        transition: transform 0.3s ease;
+    }
+    .menu-opened #closeMenu {
+        transform: rotate(90deg); /* Rotate by 90 degrees when the menu is open */
+    }
+    #closeMenu:hover {
+        transform: rotate(180deg); /* Rotate 180 degrees on hover */
+        transition: transform 0.3s ease;
+    }
+
    /* Refine hero-section styles */
 .hero-section {
   position: relative;
@@ -72,112 +91,11 @@
             font-size: 2rem;
             color: #38a169; /* Green color */
         }
-    header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff; /* Adjust as needed */
-    z-index: 1000; /* Ensures it's above other content */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds shadow */
-}
-/* Adjust body margin-top to account for the header height */
-body {
-  margin-top: 60px; /* Match this to header height */
-}
-
-    /* Apply hover effect only to non-active menu items in mobile view */
-@media (max-width: 768px) { /* Adjust this breakpoint based on your mobile view settings */
-  .menu a:not(.active):hover {
-
-    color: green !important; /* Change this to your desired hover text color */
-  }
-}
 
 
 
-   /* Refine mobile menu visibility and transformations */
-#mobile-menu {
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-  position: fixed; /* Ensure the menu is fixed on the screen */
-  top: 0;
-  right: 0;
-  z-index: 1001; /* Ensure the mobile menu is above all content */
-}
-
-#mobile-menu.menu-visible {
-  transform: translateX(0);
-}
-
-#mobile-menu .nav a {
-  display: block;
-  padding: 1rem;
-  text-align: center;
-  color: gray;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-#mobile-menu .nav a:hover {
-  color: green;
-  text-decoration: none; /* No underline on hover */
-}
-
-#mobile-menu .nav a.active {
-  color: black;
-  text-decoration: underline;
-  text-decoration-color: green; /* Green underline for active item */
-}
-
-#close-menu {
-  font-size: 1.25rem;
-  transition: transform 0.3s ease-in-out;
-}
-
-#close-menu:hover {
-  transform: rotate(90deg);
-}
 
 
-    /* Add this to your CSS file for hover effect and active page styles */
-
-/* Hover effect for header menu items */
-/* Adjust hover effect and active page styles */
-.header-menu a:hover {
-  color: #4CAF50; /* Use consistent hover color */
-}
-
-/* Active page menu item style */
-.header-menu a.active {
-  color: black;
-  border-bottom: 2px solid #4CAF50; /* Ensure underline matches the hover effect */
-}
-
-    /* Assuming the button has a class of 'btn-shop-now' */
-.btn-shop-now {
-  background-color: #4CAF50; /* Replace with your color */
-  color: white; /* Ensure text is readable */
-  border: none; /* Remove default border */
-  padding: 10px 20px; /* Adjust padding as needed */
-  font-size: 16px; /* Adjust font size as needed */
-  border-radius: 5px; /* Adjust border radius if needed */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.btn-shop-now:hover {
-  background-color: #45a049; /* Slightly darker shade on hover */
-}
-
-    /* Custom CSS for Toggle Button Icon */
-#mobile-menu-toggle i {
-  font-size: 1.5rem; /* Adjust the size as needed */
-}
-
-#close-menu i {
-  font-size: 1.5rem; /* Adjust the size as needed */
-}
 
 
     .product {
@@ -405,112 +323,12 @@ body {
 }
 
 
-      @media (max-width: 992px) {
-          .cart-icon, .search-icon, .icon {
-              font-size: 16px;
-          }
-      }
 
-      @media (max-width: 768px) {
-          .cart-icon, .search-icon, .icon {
-              font-size: 14px;
-          }
-      }
-
-      @media (max-width: 576px) {
-          .cart-icon, .search-icon, .icon {
-              font-size: 12px;
-          }
-      }
-    .logo {
-        height: 10rem; /* Default size */
-    }
-
-    @media (max-width: 1200px) {
-        .logo {
-            height: 8rem;
-        }
-    }
-
-    @media (max-width: 992px) {
-        .logo {
-            height: 6rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .logo {
-            height: 4rem;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .logo {
-            height: 3rem;
-        }
-    }
     .best-selling .btn-shop-now {
         background-color: #10b981;
         color: white;
     }
-    /* Ensure the menu is off-screen when hidden */
-.menu-hidden {
-  transform: translateX(100%);
-  opacity: 0;
-}
 
-/* Bring the menu on-screen when visible */
-.menu-visible {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-
-    /* Hide the header menu on mobile screens */
-@media (max-width: 1024px) {
-  .header-menu {
-    display: none;
-  }
-}
-
-/* Show the mobile menu toggle button on mobile screens */
-@media (max-width: 1024px) {
-  #mobile-menu-toggle {
-    display: block;
-  }
-}
-
-/* Ensure the toggle button is hidden on larger screens */
-@media (min-width: 1025px) {
-  #mobile-menu-toggle {
-    display: none;
-  }
-}
-
-/* Ensure the mobile menu is hidden initially */
-.menu-hidden {
-  transform: translateX(100%);
-  opacity: 0;
-}
-
-/* Ensure the mobile menu is visible when toggled */
-.menu-visible {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-    header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff; /* Adjust as needed */
-    z-index: 1000; /* Ensures it's above other content */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds shadow */
-}
-body {
-    margin-top: 60px; /* Adjust based on header height */
-}
      .countdown-container {
             display: flex;
             justify-content: center;
@@ -578,45 +396,28 @@ body {
 </head>
 <body class="font-sans">
   <!-- Header -->
- <header class="bg-white shadow-md">
-  <div class="container mx-auto flex justify-between items-center p-4">
-    <div class="logo">
-      <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="logo">
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <img src="https://img.freepik.com/premium-vector/organic-food-logo-template-design_316488-336.jpg" alt="Logo" class="h-12">
+        <nav class="hidden md:flex md:items-center md:space-x-7 fixed inset-0 bg-white z-50 flex-col md:flex-row md:static md:bg-transparent justify-center items-center">
+            <a href="index.html" class="nav-link text-l mb-6 md:mb-0 md:text-base active">Home</a>
+            <a href="shop.html" class="nav-link text-l mb-6 md:mb-0 md:text-base ">Shop</a>
+            <a href="blog.html" class="nav-link text-l mb-6 md:mb-0 md:text-base">Blog</a>
+            <a href="contact.html" class="nav-link text-l mb-6 md:mb-0 md:text-base">Contact Us</a>
+            <button id="closeMenu" class="absolute top-4 right-4 text-3xl md:hidden">&times;</button>
+        </nav>
+        <div class="flex space-x-4 text-gray-600">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+        </div>
+        <button class="md:hidden text-gray-600 text-2xl" id="mobileMenuButton">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-    <!-- Header Menu -->
-    <nav class="header-menu hidden md:flex space-x-4" style="font-weight:bold;">
-      <a href="index.html" class="active text-gray-700">Home</a>
-      <a href="shop.html" class="text-gray-700">Shop</a>
-      <a href="blog.html" class="text-gray-700">Blog</a>
-      <a href="contact.html" class="text-gray-700">Contact Us</a>
-    </nav>
-    <!-- Icons -->
-    <div class="icons flex space-x-4">
-      <a href="#"><i class="fa fa-search search-icon"></i></a>
-      <a href="#"><i class="fa fa-shopping-cart cart-icon"></i></a>
-      <a href="#"><i class="fa fa-user icon"></i></a>
-    </div>
-    <!-- Mobile Menu Button -->
-    <button id="mobile-menu-toggle" class="lg:hidden px-3 py-2 text-gray-700 focus:outline-none">
-      <i class="fas fa-bars fa-lg"></i>
-    </button>
-    <!-- Mobile Menu -->
-   <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 menu-hidden">
-  <div class="flex justify-end p-4">
-    <button id="close-menu" class="text-gray-700">
-      <i class="fas fa-times fa-lg"></i>
-    </button>
-  </div>
-  <nav class=" menu flex flex-col items-center mt-12">
-    <a href="index.html" style="color: black; border-bottom: 2px solid #4CAF50;"class="active py-2 text-gray-700">Home</a>
-    <a href="shop.html" class="py-2 text-gray-700">Shop</a>
-    <a href="blog.html" class="py-2 text-gray-700">Blog</a>
-    <a href="contact.html" class="py-2 text-gray-700">Contact Us</a>
-  </nav>
-</div>
-
 </header>
-  <br>
+
+
 
 
 
@@ -624,39 +425,65 @@ body {
 
 
 <!-- Hero Section -->
-<section class="bg-cover bg-center relative pt-10 sm:pt-10 md:pt-24 lg:pt-28 xl:pt-32 pb-8 sm:pb-12 lg:pb-16">
+<section class="bg-cover bg-center relative pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 2xl:pt-18 pb-8 sm:pb-12 lg:pb-14">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="slider overflow-hidden">
       <div class="slides flex transition-transform duration-300 ease-in-out">
+        <!-- First Slide -->
+      <div class="slide w-full flex-shrink-0">
+  <div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12">
+    <!-- Text Content -->
+    <div class="w-full lg:w-1/2 lg:pr-10 mb-6 lg:mb-0">
+      <!-- Move h1 up further on larger screens -->
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-5 lg:mb-6 lg:-mt-8 leading-tight">
+        Fresh Organic From The Farm
+      </h1>
+      <p class="text-gray-700 text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 lg:mb-6 max-w-xl">
+        Enjoy the best quality fresh produce directly from the farm to your table. Experience the difference with our organic products.
+      </p>
+      <a href="#" class="bg-green-600 text-white px-5 py-2 sm:px-6 sm:py-2 rounded-lg inline-block hover:bg-green-700 transition-colors duration-300 text-base font-semibold">
+        Shop Now
+      </a>
+    </div>
+    <!-- Image -->
+    <div class="w-full lg:w-1/2 flex justify-center items-center">
+      <img src="https://images.unsplash.com/photo-1548808918-a33260f83b25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlMjBmb29kfGVufDB8fDB8fHww" 
+           alt="Fresh Produce" 
+           class="w-full max-w-md h-auto object-cover rounded-xl shadow-lg">
+    </div>
+  </div>
+</div>
+
+
+        <!-- Second Slide -->
         <div class="slide w-full flex-shrink-0">
-          <div class="flex flex-col lg:flex-row items-center justify-between">
-            <div class="w-full lg:w-1/2 lg:pr-12 mb-8 lg:mb-0">
-              <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 lg:mb-5 leading-tight">Fresh Organic From The Farm</h1>
-              <p class="text-gray-700 text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 lg:mb-6 max-w-xl">Enjoy the best quality fresh produce directly from the farm to your table. Experience the difference with our organic products.</p>
-              <a href="#" class="bg-green-600 text-white px-5 py-2 sm:px-6 sm:py-2 rounded-lg inline-block hover:bg-green-700 transition-colors duration-300 text-base font-semibold">Shop Now</a>
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12">
+            <!-- Text Content -->
+            <div class="w-full lg:w-1/2 lg:pr-10 mb-6 lg:mb-0">
+              <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-5 lg:mb-6 leading-tight">
+                Pure Organic Goodness from the Farm
+              </h1>
+              <p class="text-gray-700 text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 lg:mb-6 max-w-xl">
+                Savor the freshness of our farm-to-table organic produce. Nourish your body with nature's finest offerings.
+              </p>
+              <a href="#" class="bg-green-600 text-white px-5 py-2 sm:px-6 sm:py-2 rounded-lg inline-block hover:bg-green-700 transition-colors duration-300 text-base font-semibold">
+                Shop Now
+              </a>
             </div>
+            <!-- Image -->
             <div class="w-full lg:w-1/2 flex justify-center items-center">
-              <img src="https://images.unsplash.com/photo-1548808918-a33260f83b25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjlMjBmb29kfGVufDB8fDB8fHww" alt="Fresh Produce" class="w-full max-w-lg h-auto object-cover rounded-xl shadow-lg">
-            </div>
-          </div>
-        </div>
-        <div class="slide w-full flex-shrink-0">
-          <div class="flex flex-col lg:flex-row items-center justify-between">
-            <div class="w-full lg:w-1/2 lg:pr-12 mb-8 lg:mb-0">
-              <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 lg:mb-5 leading-tight">Pure Organic Goodness from the Farm</h1>
-              <p class="text-gray-700 text-base sm:text-lg lg:text-xl mb-4 sm:mb-5 lg:mb-6 max-w-xl">Savor the freshness of our farm-to-table organic produce. Nourish your body with nature's finest offerings.</p>
-              <a href="#" class="bg-green-600 text-white px-5 py-2 sm:px-6 sm:py-2 rounded-lg inline-block hover:bg-green-700 transition-colors duration-300 text-base font-semibold">Shop Now</a>
-            </div>
-            <div class="w-full lg:w-1/2 flex justify-center items-center">
-              <img src="https://i.ibb.co/7n12Jb7/image-removebg-preview.png" alt="Fresh Produce" class="w-full max-w-lg h-auto object-contain rounded-xl">
+              <img src="https://i.ibb.co/7n12Jb7/image-removebg-preview.png" 
+                   alt="Fresh Produce" 
+                   class="w-full max-w-md h-auto object-contain rounded-xl">
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="dots flex justify-center mt-6">
-      <button class="dot w-3 h-3 bg-gray-300 rounded-full mx-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors duration-200" aria-label="Slide 1"></button>
-      <button class="dot w-3 h-3 bg-gray-300 rounded-full mx-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors duration-200" aria-label="Slide 2"></button>
+    <!-- Dots Navigation -->
+    <div class="dots flex justify-center mt-4 lg:mt-6">
+      <button class="dot w-3 h-3 bg-gray-300 rounded-full mx-1 lg:mx-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors duration-200" aria-label="Slide 1"></button>
+      <button class="dot w-3 h-3 bg-gray-300 rounded-full mx-1 lg:mx-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors duration-200" aria-label="Slide 2"></button>
     </div>
   </div>
 </section>
@@ -963,21 +790,24 @@ body {
     </div>
   </footer>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const menuToggle = document.getElementById('mobile-menu-toggle');
-      const closeMenu = document.getElementById('close-menu');
-      const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+const nav = document.querySelector('nav');
+const closeMenu = document.getElementById('closeMenu');
 
-      menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.remove('menu-hidden');
-        mobileMenu.classList.add('menu-visible');
-      });
+function toggleMenu() {
+    nav.classList.toggle('flex');
+    nav.classList.toggle('hidden');
+    document.body.classList.toggle('overflow-hidden');
+    document.body.classList.toggle('menu-opened'); // Toggle the menu-opened class to apply the rotation
+}
 
-      closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.remove('menu-visible');
-        mobileMenu.classList.add('menu-hidden');
-      });
-    });
+mobileMenuButton.addEventListener('click', toggleMenu);
+closeMenu.addEventListener('click', toggleMenu);
+
+// Close menu when clicking on a link
+nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', toggleMenu);
+});
    document.getElementById('newsletter-form').addEventListener('submit', function(event) {
             event.preventDefault();
             const emailInput = document.getElementById('email');
