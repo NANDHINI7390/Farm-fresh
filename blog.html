@@ -383,18 +383,108 @@
     <!-- Header Section -->
     <!-- Modify your header section like this -->
 
-<div class="header-slide-in">
-    <div class="header-content">
-        <img src="https://i.ibb.co/BzVvRWC/image.png" alt="Pasta Image">
-        <div class="card">
-            <img src="https://i.ibb.co/FHyyf30/image.png" alt="Asparagus Dish" class="rounded-full">
-            <p class="text-lg font-serif">Delectable Gluten Free Recipes <span style="font-weight:bold">in a Snap</span></p>
+ <div class="container animated-div">
+   <h2 class="title"><span class="text-green">Culinary</span> Compass: This Week's <span class="text-green">Flavors</span></h2>
+        <div class="content">
+            <img src="https://images.unsplash.com/photo-1504387432042-8aca549e4729?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M1BQZKqdp2CV3QV5nUEsqSg1ygegLmqRygjIwZnJlZSUyMHJlY2VwaWVzfGVufDB8fDB8fHww" alt="Pasta Image" class="pasta-image">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT50xwAdh0vmeXCohE9EBDtQ_asX9F422vl7A&s" alt="ghee Dish" class="asparagus-image">
+              <p class="recipe-text"><center>Delectable <span class="text-green">"Gluten-Free"</span> Recipes</center></p>
+            </div>
         </div>
     </div>
+<!-- Inline CSS for responsive layout -->
+<style>
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+  .animated-div {
+  opacity: 0; /* Start with the div invisible */
+  transform: translateY(100%); /* Start the div off-screen (below) */
+  animation: slideUp 1s ease-out forwards; /* Apply the animation */
+}
 
-    <div class="header-full-width">
+/* Animation keyframes */
+@keyframes slideUp {
+  to {
+    opacity: 1; /* Make the div fully visible */
+    transform: translateY(0); /* Move the div to its final position */
+  }
+}
+
+        .container {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .pasta-image {
+            width: 100%;
+            max-width: 300px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 300px;
+        }
+        .asparagus-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .recipe-text {
+            font-size: 18px;
+            font-family: serif;
+            margin: 0;
+        }
+        @media (min-width: 600px) {
+            .content {
+                flex-direction: row;
+                justify-content: center;
+                align-items: stretch;
+            }
+            .pasta-image {
+                width: 50%;
+                max-width: none;
+                height: 200px;
+            }
+            .card {
+                width: 40%;
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+            }
+            .asparagus-image {
+                margin-bottom: 10px;
+            }
+        }
+</style>
+
+
+
+<div class="header-full-width">
         <p>Gluten Free • Gluten Free • Gluten Free • Gluten Free • Gluten Free • Gluten Free</p>
     </div>
+
 
 
     <!-- Products Section -->
@@ -421,6 +511,62 @@
             </div>
         </div>
     </div>
+  <style>
+    .products-section {
+  padding: 20px 0;
+  background-color: #f9f9f9;
+}
+
+.products-section h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 16px; /* Space between cards */
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for better definition */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 250px; /* Ensure cards are concise */
+  margin: 0 auto; /* Center align cards */
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.product-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: green;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 0;
+}
+
+/* Hover effect for the cards */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+  </style>
 </section>
 
 
@@ -492,23 +638,23 @@
     </div>
   </footer>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var scrollAnimations = document.querySelectorAll('.scroll-animation');
+    document.addEventListener('DOMContentLoaded', function () {
+    const scrollAnimations = document.querySelectorAll('.scroll-animation');
 
-        function checkScroll() {
-            scrollAnimations.forEach(function(element) {
-                var position = element.getBoundingClientRect().top;
-                var windowHeight = window.innerHeight;
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target); // Optional: stop observing once animated
+            }
+        });
+    }, { threshold: 0.5 });
 
-                if (position < windowHeight * 0.75) {
-                    element.classList.add('animate');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', checkScroll);
-        checkScroll(); // Check on load
+    scrollAnimations.forEach(animation => {
+        observer.observe(animation);
     });
+});
+
     const mobileMenuButton = document.getElementById('mobileMenuButton');
 const nav = document.querySelector('nav');
 const closeMenu = document.getElementById('closeMenu');
