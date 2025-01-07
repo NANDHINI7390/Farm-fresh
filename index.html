@@ -625,28 +625,62 @@
     </div>
 
     <!-- Countdown Timer -->
-    <div class="container mx-auto text-center">
-      <h2 class="text-2xl font-bold mb-4">Countdown Timer</h2>
-      <div class="countdown-container" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; text-align: center;">
-        <div class="countdown-item" style="flex: 1; min-width: 100px;">
-          <p id="days" style="font-size: 1.5rem; font-weight: bold;">45</p>
-          <p>Days</p>
-        </div>
-        <div class="countdown-item" style="flex: 1; min-width: 100px;">
-          <p id="hours" style="font-size: 1.5rem; font-weight: bold;">15</p>
-          <p>Hours</p>
-        </div>
-        <div class="countdown-item" style="flex: 1; min-width: 100px;">
-          <p id="minutes" style="font-size: 1.5rem; font-weight: bold;">33</p>
-          <p>Minutes</p>
-        </div>
-        <div class="countdown-item" style="flex: 1; min-width: 100px;">
-          <p id="seconds" style="font-size: 1.5rem; font-weight: bold;">22</p>
-          <p>Seconds</p>
-        </div>
-      </div>
+<div class="container mx-auto text-center">
+  <h2 class="text-2xl font-bold mb-4">Countdown Timer</h2>
+  <div
+    class="countdown-container"
+    style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; text-align: center;"
+  >
+    <div class="countdown-item" style="flex: 1; min-width: 100px;">
+      <p id="days" style="font-size: 1.5rem; font-weight: bold;">00</p>
+      <p>Days</p>
+    </div>
+    <div class="countdown-item" style="flex: 1; min-width: 100px;">
+      <p id="hours" style="font-size: 1.5rem; font-weight: bold;">00</p>
+      <p>Hours</p>
+    </div>
+    <div class="countdown-item" style="flex: 1; min-width: 100px;">
+      <p id="minutes" style="font-size: 1.5rem; font-weight: bold;">00</p>
+      <p>Minutes</p>
+    </div>
+    <div class="countdown-item" style="flex: 1; min-width: 100px;">
+      <p id="seconds" style="font-size: 1.5rem; font-weight: bold;">00</p>
+      <p>Seconds</p>
     </div>
   </div>
+</div>
+<script>
+  // Set the target date and time for the countdown
+const targetDate = new Date("2025-12-31T23:59:59").getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const timeLeft = targetDate - now;
+
+  if (timeLeft > 0) {
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    // Update the HTML elements with the calculated values
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+  } else {
+    // If the countdown is over, display a message
+    document.querySelector(".countdown-container").innerHTML = "<p>Countdown Over!</p>";
+  }
+}
+
+// Update the countdown every second
+setInterval(updateCountdown, 1000);
+
+// Initialize the countdown immediately
+updateCountdown();
+
+    </script>
 </section>
 
 
